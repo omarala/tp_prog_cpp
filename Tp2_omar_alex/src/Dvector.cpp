@@ -82,6 +82,99 @@ Dvector::~Dvector(){
     delete [] this->vect;
 }
 
+/** 
+* surcharge d'operateur ()
+*/
+double Dvector::operator ()(int i){
+    //assert ((0 <= i <= (this.size() - 1), && "this number is not between 0 and the size of the vector");
+    return this->vect[i];
+}
+
+/** 
+* surcharge d'operateur ()
+*/
+double Dvector::operator ()(int i) const{
+    //assert ((0 <= i <= (this.size() - 1), && "this number is not between 0 and the size of the vector");
+    return this->vect[i];
+}
+
+/**
+* surcharge d'operateur addition par un reel
+*/
+Dvector & Dvector::operator+=(double x){
+    for (int i = 0; i < this->dim; i++){
+        this->vect[i] += i;
+    }
+}
+
+Dvector operator+(const Dvector &V, const double x){
+    Dvector doubleVect(V);
+    doubleVect += x;
+    return doubleVect;
+}
+
+Dvector operator+(const double x, const Dvector &V){
+    Dvector doubleVect(V);
+    doubleVect += x;
+    return doubleVect;
+}
+
+/**
+* surcharge d'operateur soustraction par un reel
+*/
+Dvector & Dvector::operator -=(double x){
+    for (int i = 0; i < this->dim; i++){
+        this->vect[i] -= i;
+    }
+}
+
+Dvector operator-(const Dvector &V, const double x){
+    Dvector doubleVect(V);
+    doubleVect -= x;
+    return doubleVect;
+}
+
+Dvector operator-(const double x, const Dvector &V){
+    Dvector doubleVect(V);
+    doubleVect -= x;
+    return doubleVect;
+}
+
+/**
+* surcharge d'operateur multiplication par un reel
+*/
+Dvector & Dvector::operator *=(double x){
+    for (int i = 0; i < this->dim; i++){
+        this->vect[i] *= i;
+    }
+}
+
+Dvector operator*(const Dvector &V, const double x){
+    Dvector doubleVect(V);
+    doubleVect *= x;
+    return doubleVect;
+}
+
+Dvector operator*(const double x, const Dvector &V){
+    Dvector doubleVect(V);
+    doubleVect *= x;
+    return doubleVect;
+}
+
+/**
+* surcharge d'operateur division par un reel
+*/
+Dvector & Dvector::operator /=(double x){
+    for (int i = 0; i < this->dim; i++){
+        this->vect[i] /= i;
+    }
+}
+
+Dvector operator/(const Dvector &V, const double x){
+    Dvector doubleVect(V);
+    doubleVect /= x;
+    return doubleVect;
+}
 
   int main(){
     Dvector v("file.txt");

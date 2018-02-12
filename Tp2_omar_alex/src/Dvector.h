@@ -37,7 +37,24 @@ class Dvector{
     // constructor by copy
     Dvector(Dvector const & toCopy);
     ~Dvector();
+    // accession au ieme element 
+    double operator()(int i);
+    double operator()(int i) const;
+    // addition par un reel
+    Dvector & operator +=(double x);
+    // soustraction par un reel
+    Dvector & operator -=(double x);
+    // multiplication par un reel
+    Dvector & operator *=(double x);
+    // division par un reel
+    Dvector & operator /=(double x);
+    
+    
+    
+    
+    
 
+    
 
 };
 
