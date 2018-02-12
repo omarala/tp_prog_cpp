@@ -6,7 +6,8 @@
 
 using namespace std;
 int MAXLINE = 256;
-int Dvector::size(){
+
+int Dvector::size() const{
     return this->dim;
 }
 

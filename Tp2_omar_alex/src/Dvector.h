@@ -23,7 +23,7 @@ class Dvector{
 
     public:
     // returns the size
-    int size();
+    int size() const;
     // displays the array
     void display(ostream &str=cout);
     // random filler
