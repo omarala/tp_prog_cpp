@@ -28,6 +28,11 @@ class Dvector{
     void display(ostream &str=cout);
     // random filler
     void fillRandomly();
+
+    // Surcharge d'operateur
+    Dvector & operator += (Dvector const & toAdd);
+    Dvector & operator -= (Dvector const & toSubb);
+    Dvector operator - (Dvector const & toModify);
     // default constructor
     Dvector();
     // constructor
@@ -37,7 +42,7 @@ class Dvector{
     // constructor by copy
     Dvector(Dvector const & toCopy);
     ~Dvector();
-
+    
 
 };
 

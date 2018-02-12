@@ -14,7 +14,6 @@ void Dvector::display(std::ostream &str){
     for(int i = 0 ; i<this->size(); i++){
         str<<vect[i]<<endl;
     }
-    str<<endl;
 }
 
 void Dvector::fillRandomly(){
@@ -73,6 +72,60 @@ Dvector::Dvector(string file_name){
     
  
 }
+/**
+ * Surcharge externe de l'operateur flux
+ */
+
+ostream & operator <<(ostream &stream, Dvector vector){
+    for(int i = 0 ; i<vector.size(); i++){
+        stream<<vector(i);
+    }
+    stream<<endl;
+    return stream;
+}
+
+ostream & operator >>(ostream &stream, Dvector vector){
+    stream<<"enter "<<vector.size()<<" double(s) please"<<endl;
+    for(int i = 0 ; i<vector.size(); i++){
+        stream>>vector(i);
+    }
+    return stream;
+}
+
+Dvector & Dvector::operator +=(Dvector const & toAdd){
+    for (int i = 0; i<toAdd.size(); i++){
+        this->vect[i] += toAdd(i);
+    }
+}
+
+Dvector & Dvector::operator -=(Dvector const & toSubb){
+    for (int i = 0; i<toSubb.size(); i++){
+        this->vect[i] -= toSubb(i);
+    }
+}
+
+Dvector Dvector::operator -(Dvector const & toModify){
+    Dvector returnVect(toModify.size());
+    returnVect -= toModify;
+    return returnVect;
+}
+/**
+ * Surcharge externe de add
+ */
+Dvector operator +(Dvector const & vect1, Dvector const & vect2){
+    Dvector returnVect(vect1);
+    returnVect += vect2;
+    return returnVect;
+}
+/**
+ * Surcharge externe de subb
+ */
+Dvector operator -(Dvector const & vect1, Dvector const & vect2){
+    Dvector returnVect(vect1);
+    returnVect -= vect2;
+    return returnVect;
+}
+
 Dvector::Dvector(Dvector const & toCopy){
     this->vect = toCopy.vect;
     this->dim = toCopy.dim;
