@@ -2,11 +2,16 @@
 #include <ctime>
 #include <cstdlib>
 #include <fstream>
+#include <cstring>
 #include "Dvector.h"
 
 using namespace std;
 int MAXLINE = 256;
 
+/**
+ * Const method: enable the method size to be called
+ * on const object
+ */
 int Dvector::size() const{
     return this->dim;
 }
@@ -21,6 +26,10 @@ void Dvector::fillRandomly(){
     for(int i = 0; i<this->size(); i++){
         this->vect[i] = ((double)rand())/RAND_MAX;
     }
+}
+
+double* Dvector::getVect() const{
+    return vect;
 }
 
 Dvector::Dvector(){
@@ -79,7 +88,7 @@ Dvector::Dvector(string file_name){
 
 ostream & operator <<(ostream &stream, Dvector vector){
     for(int i = 0 ; i<vector.size(); i++){
-        stream<<vector(i);
+        stream<<vector(i)<<", ";
     }
     stream<<endl;
     return stream;
@@ -92,19 +101,32 @@ ostream & operator >>(ostream &stream, Dvector vector){
     }
     return stream;
 }
-
+// Surcharge de l'opérateur += (à réutiliser pour +)
 Dvector & Dvector::operator +=(Dvector const & toAdd){
+    Dvector &W = *this;
     for (int i = 0; i<toAdd.size(); i++){
-        this->vect[i] += toAdd(i);
+        W(i) += toAdd(i);
     }
+    return W;
 }
-
+// Surcharge de l'opérateur -= (à réutiliser pour -)
 Dvector & Dvector::operator -=(Dvector const & toSubb){
+    Dvector &W = *this;    
     for (int i = 0; i<toSubb.size(); i++){
         this->vect[i] -= toSubb(i);
     }
+    return W;
 }
 
+/**
+ * Surcharge de l'opérateur = avec memcopy
+ */
+Dvector & Dvector::operator = (Dvector const & toCopy){
+    dim = toCopy.size();
+    vect = new double[dim];
+    memcpy(vect, toCopy.vect, dim*sizeof(double));
+    return *this;
+}
 Dvector Dvector::operator -(Dvector const & toModify){
     Dvector returnVect(toModify.size());
     returnVect -= toModify;
@@ -139,24 +161,16 @@ Dvector::~Dvector(){
 /** 
 * surcharge d'operateur ()
 */
-double Dvector::operator ()(int i){
+double & Dvector::operator ()(int i) const{
     //assert ((0 <= i <= (this.size() - 1), && "this number is not between 0 and the size of the vector");
-    return this->vect[i];
-}
-
-/** 
-* surcharge d'operateur ()
-*/
-double Dvector::operator ()(int i) const{
-    //assert ((0 <= i <= (this.size() - 1), && "this number is not between 0 and the size of the vector");
-    return this->vect[i];
+    return vect[i];
 }
 
 /**
 * surcharge d'operateur addition par un reel
 */
 Dvector & Dvector::operator+=(double x){
-    Dvector W(*this);
+    Dvector& W = *this;
     for (int i = 0; i < W.size(); i++){
         W(i) += x;
     }
@@ -179,7 +193,7 @@ Dvector operator+(const double x, const Dvector &V){
 * surcharge d'operateur soustraction par un reel
 */
 Dvector & Dvector::operator -=(double x){
-    Dvector W(*this);
+    Dvector& W = *this;
     for (int i = 0; i < W.size(); i++){
         W(i) -= x;
     }
@@ -202,7 +216,7 @@ Dvector operator-(const double x, const Dvector &V){
 * surcharge d'operateur multiplication par un reel
 */
 Dvector & Dvector::operator *=(double x){
-    Dvector W(*this);
+    Dvector &W = *this;
     for (int i = 0; i < W.size(); i++){
         W(i) *= x;
     }
@@ -225,9 +239,11 @@ Dvector operator*(const double x, const Dvector &V){
 * surcharge d'operateur division par un reel
 */
 Dvector & Dvector::operator /=(double x){
-    for (int i = 0; i < this->dim; i++){
-        this->vect[i] /= i;
+    Dvector &W = *this;
+    for (int i = 0; i < W.size(); i++){
+        W(i) /= x;
     }
+    return W;
 }
 
 Dvector operator/(const Dvector &V, const double x){
@@ -237,8 +253,18 @@ Dvector operator/(const Dvector &V, const double x){
 }
 
   int main(){
-    Dvector v("file.txt");
+    //Dvector v("file.txt");
     //assert(v.size() == 3);
+    Dvector v(3);
+    v+= 2;
+    v*=4;
+    cout<<"v : "<<v;
+    Dvector v2(v);
+    v2 -= 5;
+    cout<<v;
+    cout<<"v2 : "<<v2;
+    Dvector v3 = v + v2;
+    cout<<v3;
     cout<<"size : "<<v.size()<<endl;
     cout<<"vector : "<<endl;
     v.display();

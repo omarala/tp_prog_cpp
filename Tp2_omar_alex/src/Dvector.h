@@ -28,11 +28,14 @@ class Dvector{
     void display(ostream &str=cout);
     // random filler
     void fillRandomly();
+    // gett for vect
+    double* getVect() const;
 
     // Surcharge d'operateur
     Dvector & operator += (Dvector const & toAdd);
     Dvector & operator -= (Dvector const & toSubb);
     Dvector operator - (Dvector const & toModify);
+    Dvector &operator = (Dvector const & toCopy);
     // default constructor
     Dvector();
     // constructor
@@ -43,8 +46,7 @@ class Dvector{
     Dvector(Dvector const & toCopy);
     ~Dvector();
     // accession au ieme element 
-    double operator ()(int i);
-    double operator ()(int i) const;
+    double & operator ()(int i) const;
     // addition par un reel
     Dvector & operator +=(double x);
     // soustraction par un reel
