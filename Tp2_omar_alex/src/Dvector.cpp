@@ -6,7 +6,7 @@
 
 using namespace std;
 int MAXLINE = 256;
-int Dvector::size(){
+int Dvector::size() const{
     return this->dim;
 }
 
@@ -96,12 +96,14 @@ Dvector & Dvector::operator +=(Dvector const & toAdd){
     for (int i = 0; i<toAdd.size(); i++){
         this->vect[i] += toAdd(i);
     }
+    return *this;
 }
 
 Dvector & Dvector::operator -=(Dvector const & toSubb){
     for (int i = 0; i<toSubb.size(); i++){
         this->vect[i] -= toSubb(i);
     }
+    return *this;    
 }
 
 Dvector Dvector::operator -(Dvector const & toModify){
@@ -154,12 +156,11 @@ double Dvector::operator ()(int i) const{
 /**
 * surcharge d'operateur addition par un reel
 */
-Dvector & Dvector::operator+=(double x){
-    Dvector W(*this);
-    for (int i = 0; i < W.size(); i++){
-        W(i) += x;
+Dvector & Dvector::operator+=(const double x){
+    for (int i = 0; i < this->dim; i++){
+        this->vect[i] += x;
     }
-    return W;
+    return *this;
 }
 
 Dvector operator+(const Dvector &V, const double x){
@@ -178,11 +179,10 @@ Dvector operator+(const double x, const Dvector &V){
 * surcharge d'operateur soustraction par un reel
 */
 Dvector & Dvector::operator -=(double x){
-    Dvector W(*this);
-    for (int i = 0; i < W.size(); i++){
-        W(i) -= x;
+    for (int i = 0; i < this->dim; i++){
+        this->vect[i] -= x;
     }
-    return W;
+    return *this;
 }
 
 Dvector operator-(const Dvector &V, const double x){
@@ -201,11 +201,10 @@ Dvector operator-(const double x, const Dvector &V){
 * surcharge d'operateur multiplication par un reel
 */
 Dvector & Dvector::operator *=(double x){
-    Dvector W(*this);
-    for (int i = 0; i < W.size(); i++){
-        W(i) *= x;
+    for (int i = 0; i < this->dim; i++){
+        this->vect[i] *= x;        
     }
-    return W;
+    return *this;
 }
 
 Dvector operator*(const Dvector &V, const double x){
@@ -227,6 +226,7 @@ Dvector & Dvector::operator /=(double x){
     for (int i = 0; i < this->dim; i++){
         this->vect[i] /= i;
     }
+    return *this;
 }
 
 Dvector operator/(const Dvector &V, const double x){
