@@ -40,6 +40,7 @@ Dvector::Dvector(){
 }
 
 Dvector::Dvector(int dim, double default_val){
+    // assert(dim>0, && "dim doit etre positif strictement");
     this->vect = new double[dim];
     this->dim = dim;
     for(int i = 0; i <this->dim; i++){
@@ -149,8 +150,10 @@ Dvector operator -(Dvector const & vect1, Dvector const & vect2){
 }
 
 Dvector::Dvector(Dvector const & toCopy){
-    this->vect = toCopy.vect;
+    //assert
     this->dim = toCopy.dim;
+    this->vect = new double[dim];
+    memcpy(vect, toCopy.vect, dim*sizeof(double));
 }
 Dvector::~Dvector(){
     cout<<"destructor"<<endl;
