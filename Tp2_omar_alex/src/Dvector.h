@@ -56,6 +56,9 @@ class Dvector{
     Dvector & operator *=(double x);
     // division par un reel
     Dvector & operator /=(double x);
+    // test d'egalite
+    bool operator ==(const Dvector &V) const;
+
     
     
     

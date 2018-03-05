@@ -256,6 +256,19 @@ Dvector operator/(const Dvector &V, const double x){
     return doubleVect;
 }
 
+bool Dvector::operator ==(const Dvector &V) const{
+    if (this->dim != V.dim){
+        return false;
+    } else {
+        for (int i = 0; i < this->dim; i++){
+            if (this->vect[i] != V.vect[i]){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
   int main(){
     //Dvector v("file.txt");
     //assert(v.size() == 3);
