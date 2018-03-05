@@ -103,19 +103,17 @@ ostream & operator >>(ostream &stream, Dvector vector){
 }
 // Surcharge de l'opérateur += (à réutiliser pour +)
 Dvector & Dvector::operator +=(Dvector const & toAdd){
-    Dvector &W = *this;
     for (int i = 0; i<toAdd.size(); i++){
-        W(i) += toAdd(i);
+        this->vect[i] += toAdd(i);
     }
-    return W;
+    return *this;
 }
 // Surcharge de l'opérateur -= (à réutiliser pour -)
 Dvector & Dvector::operator -=(Dvector const & toSubb){
-    Dvector &W = *this;    
     for (int i = 0; i<toSubb.size(); i++){
         this->vect[i] -= toSubb(i);
     }
-    return W;
+    return *this;    
 }
 
 /**
@@ -169,12 +167,11 @@ double & Dvector::operator ()(int i) const{
 /**
 * surcharge d'operateur addition par un reel
 */
-Dvector & Dvector::operator+=(double x){
-    Dvector& W = *this;
-    for (int i = 0; i < W.size(); i++){
-        W(i) += x;
+Dvector & Dvector::operator+=(const double x){
+    for (int i = 0; i < this->dim; i++){
+        this->vect[i] += x;
     }
-    return W;
+    return *this;
 }
 
 Dvector operator+(const Dvector &V, const double x){
@@ -193,11 +190,10 @@ Dvector operator+(const double x, const Dvector &V){
 * surcharge d'operateur soustraction par un reel
 */
 Dvector & Dvector::operator -=(double x){
-    Dvector& W = *this;
-    for (int i = 0; i < W.size(); i++){
-        W(i) -= x;
+    for (int i = 0; i < this->dim; i++){
+        this->vect[i] -= x;
     }
-    return W;
+    return *this;
 }
 
 Dvector operator-(const Dvector &V, const double x){
@@ -216,11 +212,10 @@ Dvector operator-(const double x, const Dvector &V){
 * surcharge d'operateur multiplication par un reel
 */
 Dvector & Dvector::operator *=(double x){
-    Dvector &W = *this;
-    for (int i = 0; i < W.size(); i++){
-        W(i) *= x;
+    for (int i = 0; i < this->dim; i++){
+        this->vect[i] *= x;        
     }
-    return W;
+    return *this;
 }
 
 Dvector operator*(const Dvector &V, const double x){
@@ -243,7 +238,7 @@ Dvector & Dvector::operator /=(double x){
     for (int i = 0; i < W.size(); i++){
         W(i) /= x;
     }
-    return W;
+    return *this;
 }
 
 Dvector operator/(const Dvector &V, const double x){
