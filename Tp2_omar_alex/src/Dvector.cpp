@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <cstring>
+#include <cassert>
 #include "Dvector.h"
 
 using namespace std;
@@ -134,7 +135,7 @@ Dvector Dvector::operator -(Dvector const & toModify){
  * Surcharge externe de add
  */
 Dvector operator +(Dvector const & vect1, Dvector const & vect2){
-    Dvector returnVect(vect1);
+    Dvector returnVect = vect1;
     returnVect += vect2;
     return returnVect;
 }
@@ -142,7 +143,7 @@ Dvector operator +(Dvector const & vect1, Dvector const & vect2){
  * Surcharge externe de subb
  */
 Dvector operator -(Dvector const & vect1, Dvector const & vect2){
-    Dvector returnVect(vect1);
+    Dvector returnVect = vect1;
     returnVect -= vect2;
     return returnVect;
 }
@@ -160,7 +161,12 @@ Dvector::~Dvector(){
 * surcharge d'operateur ()
 */
 double & Dvector::operator ()(int i) const{
-    //assert ((0 <= i <= (this.size() - 1), && "this number is not between 0 and the size of the vector");
+    //assert((0 <= i <= (this.size() - 1), && "this number is not between 0 and the size of the vector");
+    return vect[i];
+}
+
+double & Dvector::operator ()(int i){
+    //assert((0 <= i <= (this.size() - 1), && "this number is not between 0 and the size of the vector");
     return vect[i];
 }
 

@@ -47,6 +47,7 @@ class Dvector{
     ~Dvector();
     // accession au ieme element 
     double & operator ()(int i) const;
+    double & operator ()(int i);
     // addition par un reel
     Dvector & operator +=(double x);
     // soustraction par un reel
