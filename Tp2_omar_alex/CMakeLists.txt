@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 2.8.11)
+project(modelisation)
+set(CMAKE_CXX_FLAGS "-g -Wall -Wextra")
+add_executable(Dvector src/main.cpp)
+add_subdirectory(src)
+#add_subdirectory(test)
+target_link_libraries(Dvector PUBLIC libdvect)
+target_include_directories(Dvector PUBLIC libdvect)
