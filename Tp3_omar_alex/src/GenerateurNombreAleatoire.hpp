@@ -9,11 +9,12 @@ class GenerateurNombreAleatoire{
     int dim;
 
     public:
+    GenerateurNombreAleatoire();
     GenerateurNombreAleatoire(int dim);
     GenerateurNombreAleatoire(const GenerateurNombreAleatoire & toCopy);
     ~GenerateurNombreAleatoire();
     int get_dim();
-    void set_dim();
+    void set_dim(int dim);
     GenerateurNombreAleatoire & clone(const GenerateurNombreAleatoire & toCopy);
     Dvector & generate();
     void set_seed();
