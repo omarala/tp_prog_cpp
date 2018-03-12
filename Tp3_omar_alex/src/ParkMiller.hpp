@@ -12,7 +12,7 @@ class ParkMiller:GenerateurNombreAleatoire{
     ParkMiller(int seed);
     ParkMiller(const ParkMiller & toCopy);
     ~ParkMiller();
-
+    Dvector& generate();
     void set_seed(int seed);
     int get_seed();
     void reset_seed();
