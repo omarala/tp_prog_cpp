@@ -1,50 +1,51 @@
 #include <iostream>
-#include "ParkMiller.hpp"
+#include "Xorshift.hpp"
 #include "GenerateurNombreAleatoire.hpp"
 
 using namespace std;
 
-#define a 16807
-#define m 2147483647
-#define q 1127773
-#define r 2836
+#define a1 21
+#define a2 35
+#define a3 4
 
-ParkMiller::ParkMiller():GenerateurNombreAleatoire(){
+Xorshift::Xorshift():GenerateurNombreAleatoire(){
     this->seed = 0;
     this->seed0 = 0;    
 }
 
-ParkMiller::ParkMiller(int seed):GenerateurNombreAleatoire(1){
+Xorshift::Xorshift(int seed):GenerateurNombreAleatoire(1){
     this->seed = seed;
     this->seed0 = seed;    
 }
 
-ParkMiller::ParkMiller(const ParkMiller & toCopy):GenerateurNombreAleatoire(toCopy){
+Xorshift::Xorshift(const Xorshift & toCopy):GenerateurNombreAleatoire(toCopy){
     this->seed = toCopy.seed;
     this->seed0 = toCopy.seed0;    
 }
 
-void ParkMiller::set_seed(int seed){
+void Xorshift::set_seed(int seed){
     if (seed >= 0){
         this->seed = seed;
     }
 }
 
-int ParkMiller::get_seed() const{
+int Xorshift::get_seed() const{
     return this->seed;
 }
 
-void ParkMiller::reset_seed() {
+void Xorshift::reset_seed() {
     this->seed = this->seed0;
 }
 
 
-int ParkMiller::generate_int(){
-    this->seed = (a*(seed - (seed/q)*q) -r*(seed/q))%m;
+int Xorshift::generate_int(){
+    this->seed = this->seed ^ (this->seed << a1);
+    this->seed = this->seed ^ (this->seed >> a2);
+    this->seed = this->seed ^ (this->seed << a3);
     return this->seed;
 }
 
-Dvector& ParkMiller::generate(){
+Dvector& Xorshift::generate(){
     Dvector* returnVect = new Dvector(this->get_dim());
     for(int i = 0; i<this->get_dim(); i++){
         (*returnVect)(i) = generate_int();

@@ -1,18 +1,18 @@
-#ifndef PARKMILLER_HPP
-#define PARKMILLER_HPP
+#ifndef XORSHIFT_HPP
+#define XORSHIFT_HPP
 
 #include "GenerateurNombreAleatoire.hpp"
 
-class ParkMiller:GenerateurNombreAleatoire{
+class Xorshift:GenerateurNombreAleatoire{
     private:
     int seed;
     int seed0; //le seed initial, pour pouvoir revenir avec resert_seed
     
     public:
-    ParkMiller();
-    ParkMiller(int seed);
-    ParkMiller(const ParkMiller & toCopy);
-    ~ParkMiller();
+    Xorshift();
+    Xorshift(int seed);
+    Xorshift(const Xorshift & toCopy);
+    ~Xorshift();
     Dvector& generate();
     int generate_int();
     void set_seed(int seed);
