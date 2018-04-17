@@ -16,10 +16,10 @@ class GenerateurNombreAleatoire{
     int get_dim();
     void set_dim(int dim);
     GenerateurNombreAleatoire & clone(const GenerateurNombreAleatoire & toCopy);
-    virtual Dvector & generate();
-    virtual void set_seed(int seed);
-    virtual int get_seed();
-    virtual void reset_seed();
+    virtual Dvector & generate() = 0;
+    virtual void set_seed(int seed) = 0;
+    virtual int get_seed() = 0;
+    virtual void reset_seed() = 0;
 };
 
 

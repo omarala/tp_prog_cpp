@@ -31,6 +31,8 @@ class Dvector{
     // gett for vect
     double* getVect() const;
 
+    void resize(int size);
+
     // Surcharge d'operateur
     Dvector & operator += (Dvector const & toAdd);
     Dvector & operator -= (Dvector const & toSubb);
@@ -61,11 +63,14 @@ class Dvector{
 
 
 };
-
+// surcharge externe des opérateurs de flux
 ostream & operator <<(ostream &stream, const Dvector& vector);
 ostream & operator >>(ostream &stream, Dvector vector);
+// surcharge externe deds opérateurs + - pour avoir une symetrie
 Dvector operator +(Dvector const & vect1, Dvector const & vect2);
 Dvector operator -(Dvector const & vect1, Dvector const & vect2);
+// surcharge externe de l'addition et de la soustraction avec
+// un double
 Dvector operator+(const Dvector &V, const double x);
 Dvector operator+(const double x, const Dvector &V);
 Dvector operator-(const Dvector &V, const double x);

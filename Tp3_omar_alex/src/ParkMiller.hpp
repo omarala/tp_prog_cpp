@@ -1,9 +1,9 @@
 #ifndef PARKMILLER_HPP
 #define PARKMILLER_HPP
 
-#include "GenerateurNombreAleatoire.hpp"
+#include "Dvector.h"
 
-class ParkMiller:GenerateurNombreAleatoire{
+class ParkMiller{
     private:
     int seed;
     
@@ -12,8 +12,9 @@ class ParkMiller:GenerateurNombreAleatoire{
     ParkMiller(int seed);
     ParkMiller(const ParkMiller & toCopy);
     ~ParkMiller();
-    Dvector& generate();
+
     int generate_int();
+    
     void set_seed(int seed);
     int get_seed();
     void reset_seed();

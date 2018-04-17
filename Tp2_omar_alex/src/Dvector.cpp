@@ -84,6 +84,16 @@ Dvector::Dvector(string file_name){
     
  
 }
+
+void Dvector::resize(int size){
+    if (size != dim){
+        dim = size;
+        double * newVect = new double[dim];
+        memcpy(newVect, vect, dim*sizeof(double));
+        vect = newVect;
+    }
+
+}
 /**
  * Surcharge externe de l'operateur flux
  */

@@ -9,15 +9,15 @@ using namespace std;
 #define q 1127773
 #define r 2836
 
-ParkMiller::ParkMiller():GenerateurNombreAleatoire(){
+ParkMiller::ParkMiller(){
     this->seed = 0;
 }
 
-ParkMiller::ParkMiller(int seed):GenerateurNombreAleatoire(1){
+ParkMiller::ParkMiller(int seed){
     this->seed = seed;
 }
 
-ParkMiller::ParkMiller(const ParkMiller & toCopy):GenerateurNombreAleatoire(toCopy){
+ParkMiller::ParkMiller(const ParkMiller & toCopy){
     this->seed = toCopy.seed;
 }
 
@@ -26,10 +26,14 @@ int ParkMiller::generate_int(){
     return this->seed;
 }
 
-Dvector& ParkMiller::generate(){
-    Dvector* returnVect = new Dvector(this->get_dim());
-    for(int i = 0; i<this->get_dim(); i++){
-        (*returnVect)(i) = generate_int();
-    }
-    return returnVect;
+void ParkMiller::set_seed(int seed){
+    this->seed = seed;
+}
+
+int ParkMiller::get_seed(){
+    return seed;
+}
+
+void ParkMiller::reset_seed(){
+    seed = 0;
 }
