@@ -11,29 +11,36 @@ using namespace std;
 
 ParkMiller::ParkMiller(){
     this->seed = 0;
+    this->seed0 = 0;    
 }
 
 ParkMiller::ParkMiller(int seed){
     this->seed = seed;
+    this->seed0 = seed;    
 }
 
 ParkMiller::ParkMiller(const ParkMiller & toCopy){
     this->seed = toCopy.seed;
+    this->seed0 = toCopy.seed0;    
 }
+
+void ParkMiller::set_seed(int seed){
+    if (seed >= 0){
+        this->seed = seed;
+    }
+}
+
+int ParkMiller::get_seed() const{
+    return this->seed;
+}
+
+void ParkMiller::reset_seed() {
+    this->seed = this->seed0;
+}
+
 
 int ParkMiller::generate_int(){
     this->seed = (a*(seed - (seed/q)*q) -r*(seed/q))%m;
     return this->seed;
 }
 
-void ParkMiller::set_seed(int seed){
-    this->seed = seed;
-}
-
-int ParkMiller::get_seed(){
-    return seed;
-}
-
-void ParkMiller::reset_seed(){
-    seed = 0;
-}
