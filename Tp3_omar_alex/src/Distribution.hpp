@@ -7,8 +7,8 @@ class Distribution{
     private:
     int dim;
 
-
     public:
+    int tableau[];
     Distribution();
     Distribution(int dim);
     Distribution(const Distribution & toCopy);
@@ -16,7 +16,7 @@ class Distribution{
     int get_dim();
     void set_dim(int dim);
     Distribution & clone(const Distribution & toCopy);
-    void random_draws()
+    virtual void random_draws();
     virtual double get_mean();
     virtual double get_variance();
     virtual void cdf();
