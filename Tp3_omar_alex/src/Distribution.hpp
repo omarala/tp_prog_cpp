@@ -2,13 +2,14 @@
 #define DISTRIBUTION_HPP
 
 #include <iostream>
+#include "Dvector.h"
 
 class Distribution{
     private:
     int dim;
-
+    Dvector tableau;
+    
     public:
-    int tableau[];
     Distribution();
     Distribution(int dim);
     Distribution(const Distribution & toCopy);

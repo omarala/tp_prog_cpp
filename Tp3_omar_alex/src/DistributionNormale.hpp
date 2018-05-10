@@ -4,7 +4,8 @@
 #include "Distribution.hpp"
 #include <iostream>
 
-class DistributionNormale:public Distribution{
+class DistributionNormale: public Distribution{
+    public:
     void random_draws();
     double get_mean();
     double get_variance();

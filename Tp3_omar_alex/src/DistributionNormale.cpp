@@ -35,16 +35,23 @@ double get_variance(){
     return temp;
 }
 
-void cdf(){
-
+double cdf(double x){
+    double sum = 0;
+    for (int i = 0; i < this->get_dim(); i++){
+        if (this->tableau[i] < x) {
+            sum+= 1;
+        }
+    }
+    sum /= this->get_dim;
+    return sum;
 }
 
 void pdf(){
 
 }
 
-void stdev(){
-
+double stdev(){
+    return sqrt(this.get_variance());
 }
 
 void inv_cdf(){
