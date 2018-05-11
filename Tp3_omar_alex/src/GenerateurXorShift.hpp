@@ -14,7 +14,7 @@ class GenerateurXorShift:public GenerateurNombreAleatoire{
     GenerateurXorShift(int dim);
     GenerateurXorShift(const GenerateurXorShift & toCopy);
     ~GenerateurXorShift();
-    Dvector & generate();
+    Dvector generate();
     void set_seed(int seed);
     int get_seed();
     void reset_seed();

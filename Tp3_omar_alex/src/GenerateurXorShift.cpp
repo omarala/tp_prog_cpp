@@ -18,7 +18,7 @@ GenerateurXorShift::GenerateurXorShift(const GenerateurXorShift & toCopy):Genera
 }
 
 Dvector& GenerateurXorShift::generate(){
-    Dvector v = this->get_dim();
+    Dvector v = Dvector(this->get_dim());
     for(int i; i<this->get_dim(); i++){
         v(i) = genxor.generate_int();
     }
