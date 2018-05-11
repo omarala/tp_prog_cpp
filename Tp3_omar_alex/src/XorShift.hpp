@@ -3,16 +3,16 @@
 
 #include "GenerateurNombreAleatoire.hpp"
 
-class Xorshift{
+class XorShift{
     private:
     int seed;
     int seed0; //le seed initial, pour pouvoir revenir avec reset_seed
     
     public:
-    Xorshift();
-    Xorshift(int seed);
-    Xorshift(const Xorshift & toCopy);
-    ~Xorshift();
+    XorShift();
+    XorShift(int seed);
+    XorShift(const XorShift & toCopy);
+    ~XorShift();
 
     int generate_int();
     void set_seed(int seed);

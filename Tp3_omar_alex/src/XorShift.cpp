@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Xorshift.hpp"
+#include "XorShift.hpp"
 #include "GenerateurNombreAleatoire.hpp"
 
 using namespace std;
@@ -8,37 +8,37 @@ using namespace std;
 #define a2 35
 #define a3 4
 
-Xorshift::Xorshift(){
+XorShift::XorShift(){
     this->seed = 0;
     this->seed0 = 0;    
 }
 
-Xorshift::Xorshift(int seed){
+XorShift::XorShift(int seed){
     this->seed = seed;
     this->seed0 = seed;    
 }
 
-Xorshift::Xorshift(const Xorshift & toCopy){
+XorShift::XorShift(const XorShift & toCopy){
     this->seed = toCopy.seed;
     this->seed0 = toCopy.seed0;    
 }
 
-void Xorshift::set_seed(int seed){
+void XorShift::set_seed(int seed){
     if (seed >= 0){
         this->seed = seed;
     }
 }
 
-int Xorshift::get_seed() const{
+int XorShift::get_seed() const{
     return this->seed;
 }
 
-void Xorshift::reset_seed() {
+void XorShift::reset_seed() {
     this->seed = this->seed0;
 }
 
 
-int Xorshift::generate_int(){
+int XorShift::generate_int(){
     this->seed = this->seed ^ (this->seed << a1);
     this->seed = this->seed ^ (this->seed >> a2);
     this->seed = this->seed ^ (this->seed << a3);
