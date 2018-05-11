@@ -12,7 +12,7 @@ class XorShift{
     XorShift();
     XorShift(int seed);
     XorShift(const XorShift & toCopy);
-    ~XorShift();
+    // ~XorShift();
 
     int generate_int();
     void set_seed(int seed);

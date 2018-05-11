@@ -10,32 +10,35 @@ using namespace std;
 #define m2 18446744073709551615
 
 
-ParkMiller generator1 = ParkMiller(0);
-Xorshift generator2 = Xorshift(0);
+DistributionNormale::DistributionNormale():Distribution(){
+    this->mean = 0;
+    this->variance = 1;
+}
 
-void DistributionNormale::random_draws(){
+DistributionNormale::DistributionNormale(double mean, double variance, GenerateurNombreAleatoire & gen, int dim):Distribution(dim){
+    this->mean = mean;
+    this->variance = variance;
+    
+    for (int i = 0; i < this->get_dim(); i++){
+        this->tableau(i) = mean+sqrt(variance)*sqrt(-2*log(gen.generate_int())/m)*cos(2*PI*gen.generate_int()/m2);    
+    }
+}
+
+DistributionNormale::DistributionNormale(const Distribution & toCopy){
+}
+
+void DistributionNormale::random_draws(ParkMiller generator1, Xorshift generator2){
     for (int i = 0; i < this->get_dim(); i++){
         this->tableau(i) = sqrt(-2*log(generator1.generate_int())/m)*cos(2*PI*generator2.generate_int()/m2);    
     }
 }
 
 double DistributionNormale::get_mean(){
-    double mean = 0;
-    for (int i = 0; i < this->get_dim(); i++){
-        mean += this->tableau(i);
-    }
-    mean /= this->get_dim();
-    return mean;
+    return this->mean;
 }
 
 double DistributionNormale::get_variance(){
-    double temp = 0;
-    double mean = this->get_mean();
-    for (int i = 0; i < this->get_dim(); i++){
-        temp += (temp - this->tableau(i))*(temp - this->tableau(i));
-    }
-    temp /= (this->get_dim() - 1);
-    return temp;
+    return this->variance;
 }
 
 double DistributionNormale::cdf(double x){
