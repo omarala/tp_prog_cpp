@@ -4,7 +4,7 @@
 using namespace std;
 
 GenerateurNombreAleatoire::GenerateurNombreAleatoire(){
-    this->dim = 0;
+    this->dim = 1;
 }
 
 GenerateurNombreAleatoire::GenerateurNombreAleatoire(int dim){
