@@ -4,24 +4,20 @@
 #include "Distribution.hpp"
 #include <iostream>
 #include "ParkMiller.hpp"
-#include "Xorshift.hpp"
+#include "XorShift.hpp"
 #include "GenerateurNombreAleatoire.hpp"
 
 class DistributionNormale: public Distribution{
     private:
-    double mean;
+    double moyenne;
     double variance;
     
     public:
     DistributionNormale();
-    DistributionNormale(double mean, double variance, GenerateurNombreAleatoire & gen);
+    DistributionNormale(double moyenne, double variance, GenerateurNombreAleatoire & gen, int dim);
     DistributionNormale(const Distribution & toCopy);
-    ~DistributionNormale();
-    int get_dim();
-    void set_dim(int dim);
-    void random_draws(ParkMiller generator1, Xorshift generator2);
-    double get_mean();
-    double get_variance();
+    double mean();
+    double var();
     double cdf(double x);
     double pdf(double x);
     double stdev();

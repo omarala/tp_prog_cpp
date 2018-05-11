@@ -37,7 +37,7 @@ double* Dvector::getVect() const{
 Dvector::Dvector(){
     this->vect = NULL;
     this->dim = 0;
-    cout<<"default constructor"<<endl;
+    //cout<<"default constructor"<<endl;
 }
 
 Dvector::Dvector(int dim, double default_val){
@@ -47,7 +47,7 @@ Dvector::Dvector(int dim, double default_val){
     for(int i = 0; i <this->dim; i++){
         vect[i] = default_val;
     }
-    cout<<"parameted constructor"<<endl;
+    //cout<<"parameted constructor"<<endl;
 }
 int nb_line(string file_name){
     int nb_lines = 0;
@@ -85,6 +85,16 @@ Dvector::Dvector(string file_name){
     
  
 }
+
+void Dvector::resize(int size){
+    if (size != dim){
+        dim = size;
+        double * newVect = new double[dim];
+        memcpy(newVect, vect, dim*sizeof(double));
+        vect = newVect;
+    }
+
+}
 /**
  * Surcharge externe de l'operateur flux
  */
@@ -97,22 +107,21 @@ ostream & operator <<(ostream &stream, const Dvector& vector){
     return stream;
 }
 
-ostream & operator >>(ostream &stream, Dvector vector){
-    stream<<"enter "<<vector.size()<<" double(s) please"<<endl;
+istream & operator >>(istream &stream, Dvector vector){
     for(int i = 0 ; i<vector.size(); i++){
         stream>>vector(i);
     }
     return stream;
 }
 // Surcharge de l'opérateur += (à réutiliser pour +)
-Dvector & Dvector::operator +=(Dvector const & toAdd){
+Dvector & Dvector::operator +=(const Dvector & toAdd){
     for (int i = 0; i<toAdd.size(); i++){
         this->vect[i] += toAdd(i);
     }
     return *this;
 }
 // Surcharge de l'opérateur -= (à réutiliser pour -)
-Dvector & Dvector::operator -=(Dvector const & toSubb){
+Dvector & Dvector::operator -=(const Dvector & toSubb){
     for (int i = 0; i<toSubb.size(); i++){
         this->vect[i] -= toSubb(i);
     }
@@ -122,7 +131,7 @@ Dvector & Dvector::operator -=(Dvector const & toSubb){
 /**
  * Surcharge de l'opérateur = avec memcopy
  */
-Dvector & Dvector::operator = (Dvector const & toCopy){
+Dvector & Dvector::operator = (const Dvector & toCopy){
     dim = toCopy.size();
     vect = new double[dim];
     memcpy(vect, toCopy.vect, dim*sizeof(double));
@@ -139,7 +148,7 @@ Dvector Dvector::operator -(){
 /**
  * Surcharge externe de add
  */
-Dvector operator +(Dvector const & vect1, Dvector const & vect2){
+Dvector operator +(const Dvector & vect1, const Dvector & vect2){
     Dvector returnVect(vect1);
     returnVect += vect2;
     return returnVect;
@@ -147,20 +156,20 @@ Dvector operator +(Dvector const & vect1, Dvector const & vect2){
 /**
  * Surcharge externe  de subb
  */
-Dvector operator -(Dvector const & vect1, Dvector const & vect2){
+Dvector operator -(const Dvector & vect1, const Dvector & vect2){
     Dvector returnVect = vect1;
     returnVect -= vect2;
     return returnVect;
 }
 
-Dvector::Dvector(Dvector const & toCopy){
+Dvector::Dvector(const Dvector & toCopy){
     //assert
     this->dim = toCopy.dim;
     this->vect = new double[dim];
     memcpy(vect, toCopy.vect, dim*sizeof(double));
 }
 Dvector::~Dvector(){
-    cout<<"destructor"<<endl;
+    // cout<<"destructor"<<endl;
     delete [] this->vect;
 }
 
@@ -211,14 +220,14 @@ Dvector & Dvector::operator -=(double x){
 
 Dvector operator-(const Dvector &V, const double x){
     Dvector doubleVect(V);
-    doubleVect -= x;
+    doubleVect *= (-1.0);
+    doubleVect += x;
     return doubleVect;
 }
 
 Dvector operator-(const double x, const Dvector &V){
     Dvector doubleVect(V);
-    doubleVect *= (-1.0);
-    doubleVect += x;
+    doubleVect -= x;
     return doubleVect;
 }
 
@@ -259,6 +268,19 @@ Dvector operator/(const Dvector &V, const double x){
     Dvector doubleVect(V);
     doubleVect /= x;
     return doubleVect;
+}
+
+bool Dvector::operator ==(const Dvector &V) const{
+    if (this->dim != V.dim){
+        return false;
+    } else {
+        for (int i = 0; i < this->dim; i++){
+            if (this->vect[i] != V.vect[i]){
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 void Dvector::sort(){

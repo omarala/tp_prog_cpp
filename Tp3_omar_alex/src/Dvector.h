@@ -31,11 +31,13 @@ class Dvector{
     // gett for vect
     double* getVect() const;
 
+    void resize(int size);
+
     // Surcharge d'operateur
-    Dvector & operator += (Dvector const & toAdd);
-    Dvector & operator -= (Dvector const & toSubb);
-    Dvector operator -();
-    Dvector &operator = (Dvector const & toCopy);
+    Dvector & operator += (const Dvector & toAdd);
+    Dvector & operator -= (const Dvector & toSubb);
+    Dvector operator - ();
+    Dvector &operator = (const Dvector & toCopy);
     // default constructor
     Dvector();
     // constructor
@@ -56,22 +58,31 @@ class Dvector{
     Dvector & operator *=(double x);
     // division par un reel
     Dvector & operator /=(double x);
+    // test d'egalite
+    bool operator ==(const Dvector &V) const;
 
     void sort();
 
+    void resize();
+    
 };
-
+// surcharge externe des opérateurs de flux
 ostream & operator <<(ostream &stream, const Dvector& vector);
-ostream & operator >>(ostream &stream, Dvector vector);
+istream & operator >>(istream &stream, Dvector vector);
+// surcharge externe deds opérateurs + - pour avoir une symetrie
 Dvector operator +(Dvector const & vect1, Dvector const & vect2);
 Dvector operator -(Dvector const & vect1, Dvector const & vect2);
+// surcharge externe de l'addition et de la soustraction avec
+// un double
 Dvector operator+(const Dvector &V, const double x);
 Dvector operator+(const double x, const Dvector &V);
-Dvector operator-(const Dvector &V, const double x);
 Dvector operator-(const double x, const Dvector &V);
+Dvector operator-(const Dvector &V, const double x);
 
 Dvector operator*(const double x, const Dvector &V);
 Dvector operator*(const Dvector &V, const double x);
 Dvector operator/(const Dvector &V, const double x);
+
+
 
 #endif

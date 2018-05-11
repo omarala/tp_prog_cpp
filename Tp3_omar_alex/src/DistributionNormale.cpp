@@ -1,30 +1,32 @@
 #include <iostream>
 #include "DistributionNormale.hpp"
 #include "ParkMiller.hpp"
-#include "Xorshift.hpp"
+#include "XorShift.hpp"
 #include <cmath>
 
 using namespace std;
 #define PI  3.14159265359
 #define m 2147483647
-#define m2 18446744073709551615
+long long int m2 = 18446744073709551615LL;
 
 
 DistributionNormale::DistributionNormale():Distribution(){
-    this->mean = 0;
+    this->moyenne = 0;
     this->variance = 1;
 }
 
-DistributionNormale::DistributionNormale(double mean, double variance, GenerateurNombreAleatoire & gen, int dim):Distribution(dim){
-    this->mean = mean;
+DistributionNormale::DistributionNormale(double moyenne, double variance, GenerateurNombreAleatoire & gen, int dim):Distribution(dim){
+    this->moyenne = moyenne;
     this->variance = variance;
     Dvector vect_gen = gen.generate();
+    cout << vect_gen <<endl;
     for (int i = 0; i < this->get_dim(); i++){
-        this->tableau(i) = mean+sqrt(variance)*sqrt(-2*log(vect_gen(i))/m)*cos(2*PI*vect_gen(i)/m2);    
+        this->get_tab()(i) = moyenne+sqrt(variance)*sqrt(-2*log(vect_gen(i))/m)*cos(2*PI*vect_gen(i)/m2);    
+        cout << this->get_tab()(i) <<endl;
     }
 }
 
-DistributionNormale::DistributionNormale(const Distribution & toCopy){
+DistributionNormale::DistributionNormale(const Distribution & toCopy):Distribution(toCopy){
 }
 
     //  void DistributionNormale::random_draws(ParkMiller generator1, Xorshift generator2){
@@ -33,18 +35,26 @@ DistributionNormale::DistributionNormale(const Distribution & toCopy){
     //     }
     // }
 
-double DistributionNormale::get_mean(){
-    return this->mean;
+double DistributionNormale::mean(){
+    double sum = 0;
+    for (int i = 0; i < this->get_dim(); i++){
+        sum += this->get_tab()(i);
+    }
+    return sum / this->get_dim();
 }
 
-double DistributionNormale::get_variance(){
-    return this->variance;
+double DistributionNormale::var(){
+    double variance = 0;
+    for (int i = 0; i < this->get_dim(); i++){
+        variance += (this->get_tab()(i)-this->mean())*(this->get_tab()(i)-this->mean());
+    }
+    return variance / (this->get_dim()-1);
 }
 
 double DistributionNormale::cdf(double x){
     double sum = 0;
     for (int i = 0; i < this->get_dim(); i++){
-        if (this->tableau(i) < x) {
+        if (this->get_tab()(i) < x) {
             sum+= 1;
         }
     }
@@ -53,19 +63,19 @@ double DistributionNormale::cdf(double x){
 }
 
 double DistributionNormale::pdf(double x){
-    return 1/(this->stdev()*sqrt(2*PI))*exp(-( (x - this->get_mean())*(x - this->get_mean()) /2/this->get_variance() ));
+    return 1/(this->stdev()*sqrt(2*PI))*exp(-( (x - this->moyenne)*(x - this->moyenne) /2/this->var() ));
 }
 
 double DistributionNormale::stdev(){
-    return sqrt(this->get_variance());
+    return sqrt(this->var());
 }
 
 double DistributionNormale::inv_cdf(double x){
-    this->tableau.sort();
+    this->get_tab().sort();
     int s = 0;
     int i = 0;
-    while (s < this->tableau(i)){
+    while (s < this->get_tab()(i)){
         i += 1;
     }
-    return this->tableau(s);
+    return this->get_tab()(s);
 }

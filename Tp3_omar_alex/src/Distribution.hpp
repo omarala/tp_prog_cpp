@@ -17,13 +17,12 @@ class Distribution{
     int get_dim();
     void set_dim(int dim);
     Dvector get_tab();
-    virtual void random_draws();
-    virtual double get_mean();
-    virtual double get_variance();
-    virtual double cdf(double x);
-    virtual double pdf(double x);
-    virtual double stdev();
-    virtual double inv_cdf(double x);
+    virtual double mean() = 0;
+    virtual double var() = 0;
+    virtual double cdf(double x) = 0;
+    virtual double pdf(double x) = 0;
+    virtual double stdev() = 0;
+    virtual double inv_cdf(double x) = 0;
 };
 
 

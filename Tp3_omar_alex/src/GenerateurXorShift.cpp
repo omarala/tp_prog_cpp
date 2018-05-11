@@ -17,7 +17,7 @@ GenerateurXorShift::GenerateurXorShift(const GenerateurXorShift & toCopy):Genera
     this->genxor = toCopy.genxor;
 }
 
-Dvector& GenerateurXorShift::generate(){
+Dvector GenerateurXorShift::generate(){
     Dvector v = Dvector(this->get_dim());
     for(int i; i<this->get_dim(); i++){
         v(i) = genxor.generate_int();
@@ -27,7 +27,7 @@ Dvector& GenerateurXorShift::generate(){
 }
 
 void XorShift::set_seed(int seed){
-    if (seed >= 0){
+    if (seed > 0){
         this->seed = seed;
     }
 }

@@ -14,11 +14,10 @@ class GenerateurParkMiller: public GenerateurNombreAleatoire{
     GenerateurParkMiller();
     GenerateurParkMiller(int dim);
     GenerateurParkMiller(const GenerateurParkMiller & toCopy);
-    ~GenerateurParkMiller();
     Dvector generate();
-    void set_seed(int seed) = 0;
-    int get_seed() = 0;
-    void reset_seed() = 0;
+    void set_seed(int seed);
+    int get_seed();
+    void reset_seed();
 };
 
 

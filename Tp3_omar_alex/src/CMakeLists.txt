@@ -6,7 +6,9 @@ set(SOURCES_GENE
     DistributionNormale.cpp
     GenerateurNombreAleatoire.cpp
     ParkMiller.cpp
-    Xorshift.cpp)
+    XorShift.cpp
+    GenerateurParkMiller.cpp
+    GenerateurXorShift.cpp)
 
 # add_library(${PROJECT_NAME} ${SOURCES})
 add_library (libsrc ${SOURCES_GENE})

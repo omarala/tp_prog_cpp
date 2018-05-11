@@ -26,7 +26,7 @@ ParkMiller::ParkMiller(const ParkMiller & toCopy){
 }
 
 void ParkMiller::set_seed(int seed){
-    if (seed >= 0){
+    if (seed > 0){
         this->seed = seed;
     }
 }

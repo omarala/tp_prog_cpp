@@ -4,9 +4,11 @@
 using namespace std;
 
 GenerateurParkMiller::GenerateurParkMiller():GenerateurNombreAleatoire(){
+    this->pm = ParkMiller();
 }
 
 GenerateurParkMiller::GenerateurParkMiller(int dim):GenerateurNombreAleatoire(dim){
+    this->pm = ParkMiller();
 }
 
 GenerateurParkMiller::GenerateurParkMiller(const GenerateurParkMiller & toCopy):GenerateurNombreAleatoire(toCopy){
