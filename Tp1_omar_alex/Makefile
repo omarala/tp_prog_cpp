@@ -1,5 +1,6 @@
 BUILDIR=build 
 SRCDIR=src
+TSTDIR=test
 PROG=Dvector
 OBJS=Dvector.o 
 CXX=g++

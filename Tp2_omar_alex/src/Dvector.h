@@ -34,10 +34,10 @@ class Dvector{
     void resize(int size);
 
     // Surcharge d'operateur
-    Dvector & operator += (Dvector const & toAdd);
-    Dvector & operator -= (Dvector const & toSubb);
-    Dvector operator - (Dvector const & toModify);
-    Dvector &operator = (Dvector const & toCopy);
+    Dvector & operator += (const Dvector & toAdd);
+    Dvector & operator -= (const Dvector & toSubb);
+    Dvector operator - ();
+    Dvector &operator = (const Dvector & toCopy);
     // default constructor
     Dvector();
     // constructor
@@ -65,7 +65,7 @@ class Dvector{
 };
 // surcharge externe des opérateurs de flux
 ostream & operator <<(ostream &stream, const Dvector& vector);
-ostream & operator >>(ostream &stream, Dvector vector);
+istream & operator >>(istream &stream, Dvector vector);
 // surcharge externe deds opérateurs + - pour avoir une symetrie
 Dvector operator +(Dvector const & vect1, Dvector const & vect2);
 Dvector operator -(Dvector const & vect1, Dvector const & vect2);
@@ -73,8 +73,13 @@ Dvector operator -(Dvector const & vect1, Dvector const & vect2);
 // un double
 Dvector operator+(const Dvector &V, const double x);
 Dvector operator+(const double x, const Dvector &V);
-Dvector operator-(const Dvector &V, const double x);
 Dvector operator-(const double x, const Dvector &V);
+Dvector operator-(const Dvector &V, const double x);
+
+Dvector operator*(const double x, const Dvector &V);
+Dvector operator*(const Dvector &V, const double x);
+Dvector operator/(const Dvector &V, const double x);
+
 
 
 #endif

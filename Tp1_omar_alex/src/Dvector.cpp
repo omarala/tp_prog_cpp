@@ -14,7 +14,6 @@ void Dvector::display(std::ostream &str){
     for(int i = 0 ; i<this->size(); i++){
         str<<vect[i]<<endl;
     }
-    str<<endl;
 }
 
 void Dvector::fillRandomly(){
@@ -51,7 +50,7 @@ int nb_line(string file_name){
         ++nb_lines;
     }
     myfile.close();
-    return nb_lines-1;
+    return nb_lines;
 
 }
 Dvector::Dvector(string file_name){
@@ -82,15 +81,3 @@ Dvector::~Dvector(){
     delete [] this->vect;
 }
 
-
-  int main(){
-    Dvector v("file.txt");
-    //assert(v.size() == 3);
-    cout<<"size : "<<v.size()<<endl;
-    cout<<"vector : "<<endl;
-    v.display();
-    v.fillRandomly();
-    cout<<"random redistribution : "<<endl;
-    v.display();
-
-}
