@@ -34,7 +34,7 @@ class Dvector{
     // Surcharge d'operateur
     Dvector & operator += (Dvector const & toAdd);
     Dvector & operator -= (Dvector const & toSubb);
-    Dvector operator - (Dvector const & toModify);
+    Dvector operator - ();
     Dvector &operator = (Dvector const & toCopy);
     // default constructor
     Dvector();
@@ -70,5 +70,8 @@ Dvector operator+(const double x, const Dvector &V);
 Dvector operator-(const Dvector &V, const double x);
 Dvector operator-(const double x, const Dvector &V);
 
+Dvector operator*(const double x, const Dvector &V);
+Dvector operator*(const Dvector &V, const double x);
+Dvector operator/(const Dvector &V, const double x);
 
 #endif

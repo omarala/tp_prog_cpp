@@ -131,9 +131,9 @@ Dvector & Dvector::operator = (Dvector const & toCopy){
 /**
  * Operateur de negatif
  */
-Dvector Dvector::operator -(Dvector const & toModify){
-    Dvector returnVect(toModify.size());
-    returnVect -= toModify;
+Dvector Dvector::operator -(){
+    Dvector returnVect(this->size());
+    returnVect -= *this;
     return returnVect;
 }
 /**
@@ -217,7 +217,8 @@ Dvector operator-(const Dvector &V, const double x){
 
 Dvector operator-(const double x, const Dvector &V){
     Dvector doubleVect(V);
-    doubleVect -= x;
+    doubleVect *= (-1.0);
+    doubleVect += x;
     return doubleVect;
 }
 
