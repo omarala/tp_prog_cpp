@@ -6,7 +6,7 @@
 
 class DistributionNormale: public Distribution{
     public:
-    void random_draws(Distribution dist);
+    void random_draws();
     double get_mean();
     double get_variance();
     double cdf(double x);

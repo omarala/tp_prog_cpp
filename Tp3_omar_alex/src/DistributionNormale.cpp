@@ -6,13 +6,16 @@
 
 using namespace std;
 #define PI  3.14159265359
+#define m 2147483647
+#define m2 18446744073709551615
+
 
 ParkMiller generator1 = ParkMiller(0);
 Xorshift generator2 = Xorshift(0);
 
-void DistributionNormale::random_draws(Distribution dist){
-    for (int i = 0; i < dist.get_dim(); i++){
-        dist.tableau(i) = sqrt(-2*log(generator1.generate_int()))*cos(2*PI*generator2.generate_int());    
+void DistributionNormale::random_draws(){
+    for (int i = 0; i < this->get_dim(); i++){
+        this->tableau(i) = sqrt(-2*log(generator1.generate_int())/m)*cos(2*PI*generator2.generate_int()/m2);    
     }
 }
 
