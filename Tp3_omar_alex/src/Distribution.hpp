@@ -2,13 +2,15 @@
 #define DISTRIBUTION_HPP
 
 #include <iostream>
+#include "Dvector.h"
 
 class Distribution{
     private:
     int dim;
-
+    
+    
     public:
-    int tableau[];
+    Dvector tableau;
     Distribution();
     Distribution(int dim);
     Distribution(const Distribution & toCopy);
@@ -19,10 +21,10 @@ class Distribution{
     virtual void random_draws();
     virtual double get_mean();
     virtual double get_variance();
-    virtual void cdf();
-    virtual void pdf();
-    virtual void stdev();
-    virtual void inv_cdf();
+    virtual double cdf(double x);
+    virtual double pdf(double x);
+    virtual double stdev();
+    virtual double inv_cdf(double x);
 };
 
 

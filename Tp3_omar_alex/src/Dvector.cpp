@@ -5,6 +5,7 @@
 #include <cstring>
 #include <cassert>
 #include "Dvector.h"
+#include <algorithm>
 
 using namespace std;
 int MAXLINE = 256;
@@ -259,3 +260,6 @@ Dvector operator/(const Dvector &V, const double x){
     return doubleVect;
 }
 
+void Dvector::sort(){
+    std::sort(this->getVect(), this->getVect() + this->size());
+}

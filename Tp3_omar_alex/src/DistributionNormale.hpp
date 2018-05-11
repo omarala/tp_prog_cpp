@@ -4,14 +4,15 @@
 #include "Distribution.hpp"
 #include <iostream>
 
-class DistributionNormale:public Distribution{
+class DistributionNormale: public Distribution{
+    public:
     void random_draws();
     double get_mean();
     double get_variance();
-    void cdf();
-    void pdf();
-    void stdev();
-    void inv_cdf();
+    double cdf(double x);
+    double pdf(double x);
+    double stdev();
+    double inv_cdf(double x);
 
 };
 

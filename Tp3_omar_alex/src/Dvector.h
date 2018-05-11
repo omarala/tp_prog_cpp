@@ -57,6 +57,8 @@ class Dvector{
     // division par un reel
     Dvector & operator /=(double x);
 
+    void sort();
+
 };
 
 ostream & operator <<(ostream &stream, const Dvector& vector);
