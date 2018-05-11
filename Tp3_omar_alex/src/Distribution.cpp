@@ -9,13 +9,16 @@ Distribution::Distribution(){
 
 Distribution::Distribution(int dim){
     this->dim = dim;
+    this->tableau = Dvector(dim);
 }
 
 Distribution::Distribution(const Distribution & toCopy){
     this->dim = toCopy.dim;
+    this->tableau = toCopy.tableau;
 }
 
-Distribution::~Distribution(){}
+Distribution::~Distribution(){
+}
 
 int Distribution::get_dim() {
     return this->dim;
@@ -26,7 +29,6 @@ void Distribution::set_dim(int dim){
     this->dim = dim;
 }
 
-Distribution& Distribution::clone(const Distribution & toCopy){
-    this->dim = toCopy.dim;
-    return *this;
+Dvector Distribution::get_tab(){
+    return this->tableau;
 }

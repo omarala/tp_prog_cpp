@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Xorshift.hpp"
 #include "GenerateurNombreAleatoire.hpp"
+#include <assert.h>
 
 using namespace std;
 
@@ -9,11 +10,12 @@ using namespace std;
 #define a3 4
 
 Xorshift::Xorshift(){
-    this->seed = 0;
-    this->seed0 = 0;    
+    this->seed = 1;
+    this->seed0 = 1;    
 }
 
 Xorshift::Xorshift(int seed){
+    assert ( seed > 0);
     this->seed = seed;
     this->seed0 = seed;    
 }
