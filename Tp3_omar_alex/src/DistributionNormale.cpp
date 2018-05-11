@@ -18,20 +18,20 @@ DistributionNormale::DistributionNormale():Distribution(){
 DistributionNormale::DistributionNormale(double mean, double variance, GenerateurNombreAleatoire & gen, int dim):Distribution(dim){
     this->mean = mean;
     this->variance = variance;
-    
+    Dvector vect_gen = gen.generate();
     for (int i = 0; i < this->get_dim(); i++){
-        this->tableau(i) = mean+sqrt(variance)*sqrt(-2*log(gen.generate_int())/m)*cos(2*PI*gen.generate_int()/m2);    
+        this->tableau(i) = mean+sqrt(variance)*sqrt(-2*log(vect_gen(i))/m)*cos(2*PI*vect_gen(i)/m2);    
     }
 }
 
 DistributionNormale::DistributionNormale(const Distribution & toCopy){
 }
 
-void DistributionNormale::random_draws(ParkMiller generator1, Xorshift generator2){
-    for (int i = 0; i < this->get_dim(); i++){
-        this->tableau(i) = sqrt(-2*log(generator1.generate_int())/m)*cos(2*PI*generator2.generate_int()/m2);    
-    }
-}
+    //  void DistributionNormale::random_draws(ParkMiller generator1, Xorshift generator2){
+    //     for (int i = 0; i < this->get_dim(); i++){
+    //         this->tableau(i) = sqrt(-2*log(generator1.generate_int())/m)*cos(2*PI*generator2.generate_int()/m2);    
+    //     }
+    // }
 
 double DistributionNormale::get_mean(){
     return this->mean;
