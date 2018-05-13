@@ -10,3 +10,6 @@ target_link_libraries(test_fillRandomly PUBLIC libsrc PUBLIC gtest)
 
 add_executable(test_size test_size.cpp)
 target_link_libraries(test_size PUBLIC libsrc PUBLIC gtest)
+
+add_executable(test_q1 test_q1.cpp)
+target_link_libraries(test_q1 PUBLIC libsrc PUBLIC gtest)

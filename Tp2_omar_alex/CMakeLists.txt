@@ -23,4 +23,13 @@ include_directories(${gtest_SOURCE_DIR}/test)
 
 add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND})
 
-add_test (NAME test_Constructor COMMAND test_Constructor)
+add_test (NAME test_Accesseur COMMAND test_Accesseur )
+add_test (NAME test_addition_2Dvector COMMAND test_addition_2Dvector )
+add_test (NAME test_soustraction_2Dvector COMMAND test_soustraction_2Dvector )
+add_test (NAME test_multiplication_scalaire COMMAND test_multiplication_scalaire)
+add_test (NAME test_division_scalaire COMMAND test_division_scalaire)
+add_test (NAME test_egalite COMMAND test_egalite)
+
+
+
+

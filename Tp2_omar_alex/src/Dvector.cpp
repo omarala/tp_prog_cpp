@@ -36,7 +36,6 @@ double* Dvector::getVect() const{
 Dvector::Dvector(){
     this->vect = NULL;
     this->dim = 0;
-    cout<<"default constructor"<<endl;
 }
 
 Dvector::Dvector(int dim, double default_val){
@@ -46,7 +45,6 @@ Dvector::Dvector(int dim, double default_val){
     for(int i = 0; i <this->dim; i++){
         vect[i] = default_val;
     }
-    cout<<"parameted constructor"<<endl;
 }
 int nb_line(string file_name){
     int nb_lines = 0;
@@ -168,7 +166,6 @@ Dvector::Dvector(const Dvector & toCopy){
     memcpy(vect, toCopy.vect, dim*sizeof(double));
 }
 Dvector::~Dvector(){
-    cout<<"destructor"<<endl;
     delete [] this->vect;
 }
 

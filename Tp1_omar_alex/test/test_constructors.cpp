@@ -8,10 +8,11 @@ using namespace std;
 /**
  * @brief teste du constructeur à partir d'un fichier
  */
-// TEST(Dvector, ConstructeurFromFile){
-//     Dvector v("../../src/file.txt");
-//     EXPECT_EQ(4, v.size()) << "Error: size of DVectore doesn't correspond to the file size";
-// }
+TEST(Dvector, ConstructeurFromFile){
+    Dvector v("file.txt");
+    v.display();
+    EXPECT_EQ(4, v.size()) << "Error: size of DVectore doesn't correspond to the file size";
+}
 
 /**
  * @brief teste du constructeur parametré
