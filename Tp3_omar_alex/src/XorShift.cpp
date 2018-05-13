@@ -40,7 +40,7 @@ void XorShift::reset_seed() {
 }
 
 
-int XorShift::generate_int(){
+uint64_t XorShift::generate_int(){
     this->seed = this->seed ^ (this->seed << a1);
     this->seed = this->seed ^ (this->seed >> a2);
     this->seed = this->seed ^ (this->seed << a3);

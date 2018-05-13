@@ -8,7 +8,7 @@ GenerateurNombreAleatoire::GenerateurNombreAleatoire(){
     this->rand_max = 1;
 }
 
-GenerateurNombreAleatoire::GenerateurNombreAleatoire(int dim, int rand_max){
+GenerateurNombreAleatoire::GenerateurNombreAleatoire(int dim, uint64_t rand_max){
     this->dim = dim;
     this->rand_max = rand_max;
 }
@@ -24,7 +24,7 @@ int GenerateurNombreAleatoire::get_dim() {
     return this->dim;
 }
 
-int GenerateurNombreAleatoire::get_rand_max(){
+uint64_t GenerateurNombreAleatoire::get_rand_max(){
     return rand_max;
 }
 

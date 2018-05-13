@@ -36,11 +36,15 @@ target_link_libraries(XorshiftGene PUBLIC libsrc PUBLIC gtest)
 add_executable(XorshiftCopy test_xors_copy.cpp)
 target_link_libraries(XorshiftCopy PUBLIC libsrc PUBLIC gtest)
 
-add_executable(DistributionNormale test_dn.cpp)
-target_link_libraries(DistributionNormale PUBLIC libsrc PUBLIC gtest)
+add_executable(DistributionNormaleParkMiller test_dn.cpp)
+target_link_libraries(DistributionNormaleParkMiller PUBLIC libsrc PUBLIC gtest)
 
 add_executable(GenerateurParkMiller test_gen_pm.cpp)
 target_link_libraries(GenerateurParkMiller PUBLIC libsrc PUBLIC gtest)
 
 add_executable(GenerateurXorShift test_gen_xs.cpp)
 target_link_libraries(GenerateurXorShift PUBLIC libsrc PUBLIC gtest)
+
+
+add_executable(DistributionNormaleXorShift test_dn_xors.cpp)
+target_link_libraries(DistributionNormaleXorShift PUBLIC libsrc PUBLIC gtest)
