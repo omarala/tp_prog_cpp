@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ensimag/tp_prog_cpp/Tp3_omar_alex/src/Dvector.h
+iostream
+-
+
+/home/ensimag/tp_prog_cpp/Tp3_omar_alex/src/GenerateurNombreAleatoire.hpp
+iostream
+-
+Dvector.h
+/home/ensimag/tp_prog_cpp/Tp3_omar_alex/src/Dvector.h
+
+/home/ensimag/tp_prog_cpp/Tp3_omar_alex/src/ParkMiller.cpp
+iostream
+-
+ParkMiller.hpp
+/home/ensimag/tp_prog_cpp/Tp3_omar_alex/src/ParkMiller.hpp
+GenerateurNombreAleatoire.hpp
+/home/ensimag/tp_prog_cpp/Tp3_omar_alex/src/GenerateurNombreAleatoire.hpp
+assert.h
+-
+
+/home/ensimag/tp_prog_cpp/Tp3_omar_alex/src/ParkMiller.hpp
+

@@ -6,7 +6,7 @@ using namespace std;
 
 #define a 16807
 #define m 2147483647
-#define q 1127773
+#define q 127773
 #define r 2836
 
 ParkMiller::ParkMiller(){
@@ -43,7 +43,7 @@ void ParkMiller::reset_seed() {
 int ParkMiller::generate_int(){
     this->seed = (a*(seed - (seed/q)*q) -r*(seed/q))%m;
     if (this->seed < 0){
-        return this->seed + m;
+        return (this->seed + m);
     }
     return this->seed;
 }

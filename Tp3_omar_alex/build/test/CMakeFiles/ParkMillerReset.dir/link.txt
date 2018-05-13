@@ -1,0 +1,1 @@
+/usr/bin/c++   -g -Wall -std=c++11    CMakeFiles/ParkMillerReset.dir/test_pm_reset.cpp.o  -o ParkMillerReset -rdynamic ../src/liblibsrc.a ../build/googletest-src/googlemock/gtest/libgtest.a -lpthread 
