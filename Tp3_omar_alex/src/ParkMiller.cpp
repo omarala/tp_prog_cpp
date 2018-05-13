@@ -42,6 +42,9 @@ void ParkMiller::reset_seed() {
 
 int ParkMiller::generate_int(){
     this->seed = (a*(seed - (seed/q)*q) -r*(seed/q))%m;
+    if (this->seed < 0){
+        return this->seed + m;
+    }
     return this->seed;
 }
 
