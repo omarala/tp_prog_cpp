@@ -24,3 +24,7 @@ include_directories(${gtest_SOURCE_DIR}/test)
 add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND})
 
 add_test (NAME test_Constructor COMMAND test_Constructor)
+add_test (NAME test_display COMMAND test_display)
+add_test (NAME test_fillRandomly COMMAND test_fillRandomly)
+add_test (NAME test_size COMMAND test_size)
+add_test (NAME test_q1 COMMAND test_q1)

@@ -46,33 +46,24 @@ Dvector::Dvector(int dim, double default_val){
         vect[i] = default_val;
     }
 }
-int nb_line(string file_name){
-    int nb_lines = 0;
-    std::string line;
-    ifstream myfile;
-    myfile.open(file_name.c_str());
-    if(!myfile){
-        cerr<<"unable to open \"" << file_name<<"\""<< endl;
-        exit(1);
-    }
 
-    while (std::getline(myfile, line)){
-        ++nb_lines;
-    }
-    myfile.close();
-    return nb_lines-1;
-
-}
 Dvector::Dvector(string file_name){
-    int nb_lines = nb_line(file_name);
-    this->dim = nb_lines;
-    this->vect = new double[nb_lines];
     ifstream infile;
     infile.open(file_name.c_str());
     if(!infile){
         cerr<<"unable to open \"" << file_name<<"\""<< endl;
         exit(1);
     }
+    int nb_lines = 0;
+    double var;
+    while (!infile.eof()){
+        ++nb_lines;
+        infile >> var;
+    }
+    infile.seekg(0, ios::beg);
+
+    this->dim = nb_lines;
+    this->vect = new double[nb_lines];
     char line[MAXLINE];
     for(int i = 0; i<nb_lines; i++){
         infile.getline(line, MAXLINE);
@@ -80,7 +71,6 @@ Dvector::Dvector(string file_name){
     }
     infile.close();
     
- 
 }
 
 void Dvector::resize(int size){
@@ -164,6 +154,7 @@ Dvector::Dvector(const Dvector & toCopy){
     this->dim = toCopy.dim;
     this->vect = new double[dim];
     memcpy(vect, toCopy.vect, dim*sizeof(double));
+
 }
 Dvector::~Dvector(){
     delete [] this->vect;

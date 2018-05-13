@@ -56,39 +56,16 @@ CMAKE_BINARY_DIR = /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
 
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
+.PHONY : edit_cache/fast
 
 # Special rule for the target list_install_components
 list_install_components:
@@ -99,17 +76,6 @@ list_install_components:
 list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-
-.PHONY : install/strip/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -122,16 +88,50 @@ install/local/fast: install/local
 
 .PHONY : install/local/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
 
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
 
-.PHONY : edit_cache/fast
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: install/strip
+
+.PHONY : install/strip/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -166,184 +166,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-test/CMakeFiles/DistributionNormale.dir/rule:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/DistributionNormale.dir/rule
-.PHONY : test/CMakeFiles/DistributionNormale.dir/rule
+test/CMakeFiles/XorshiftConstructor.dir/rule:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/XorshiftConstructor.dir/rule
+.PHONY : test/CMakeFiles/XorshiftConstructor.dir/rule
 
 # Convenience name for target.
-DistributionNormale: test/CMakeFiles/DistributionNormale.dir/rule
+XorshiftConstructor: test/CMakeFiles/XorshiftConstructor.dir/rule
 
-.PHONY : DistributionNormale
+.PHONY : XorshiftConstructor
 
 # fast build rule for target.
-DistributionNormale/fast:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/DistributionNormale.dir/build.make test/CMakeFiles/DistributionNormale.dir/build
-.PHONY : DistributionNormale/fast
-
-# Convenience name for target.
-test/CMakeFiles/XorshiftCopy.dir/rule:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/XorshiftCopy.dir/rule
-.PHONY : test/CMakeFiles/XorshiftCopy.dir/rule
-
-# Convenience name for target.
-XorshiftCopy: test/CMakeFiles/XorshiftCopy.dir/rule
-
-.PHONY : XorshiftCopy
-
-# fast build rule for target.
-XorshiftCopy/fast:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/XorshiftCopy.dir/build.make test/CMakeFiles/XorshiftCopy.dir/build
-.PHONY : XorshiftCopy/fast
-
-# Convenience name for target.
-test/CMakeFiles/XorshiftGene.dir/rule:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/XorshiftGene.dir/rule
-.PHONY : test/CMakeFiles/XorshiftGene.dir/rule
-
-# Convenience name for target.
-XorshiftGene: test/CMakeFiles/XorshiftGene.dir/rule
-
-.PHONY : XorshiftGene
-
-# fast build rule for target.
-XorshiftGene/fast:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/XorshiftGene.dir/build.make test/CMakeFiles/XorshiftGene.dir/build
-.PHONY : XorshiftGene/fast
-
-# Convenience name for target.
-test/CMakeFiles/ParkMillerSetSeed.dir/rule:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/ParkMillerSetSeed.dir/rule
-.PHONY : test/CMakeFiles/ParkMillerSetSeed.dir/rule
-
-# Convenience name for target.
-ParkMillerSetSeed: test/CMakeFiles/ParkMillerSetSeed.dir/rule
-
-.PHONY : ParkMillerSetSeed
-
-# fast build rule for target.
-ParkMillerSetSeed/fast:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/ParkMillerSetSeed.dir/build.make test/CMakeFiles/ParkMillerSetSeed.dir/build
-.PHONY : ParkMillerSetSeed/fast
-
-# Convenience name for target.
-test/CMakeFiles/ParkMillerReset.dir/rule:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/ParkMillerReset.dir/rule
-.PHONY : test/CMakeFiles/ParkMillerReset.dir/rule
-
-# Convenience name for target.
-ParkMillerReset: test/CMakeFiles/ParkMillerReset.dir/rule
-
-.PHONY : ParkMillerReset
-
-# fast build rule for target.
-ParkMillerReset/fast:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/ParkMillerReset.dir/build.make test/CMakeFiles/ParkMillerReset.dir/build
-.PHONY : ParkMillerReset/fast
-
-# Convenience name for target.
-test/CMakeFiles/ParkMillerNoParam.dir/rule:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/ParkMillerNoParam.dir/rule
-.PHONY : test/CMakeFiles/ParkMillerNoParam.dir/rule
-
-# Convenience name for target.
-ParkMillerNoParam: test/CMakeFiles/ParkMillerNoParam.dir/rule
-
-.PHONY : ParkMillerNoParam
-
-# fast build rule for target.
-ParkMillerNoParam/fast:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/ParkMillerNoParam.dir/build.make test/CMakeFiles/ParkMillerNoParam.dir/build
-.PHONY : ParkMillerNoParam/fast
-
-# Convenience name for target.
-test/CMakeFiles/XorshiftReset.dir/rule:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/XorshiftReset.dir/rule
-.PHONY : test/CMakeFiles/XorshiftReset.dir/rule
-
-# Convenience name for target.
-XorshiftReset: test/CMakeFiles/XorshiftReset.dir/rule
-
-.PHONY : XorshiftReset
-
-# fast build rule for target.
-XorshiftReset/fast:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/XorshiftReset.dir/build.make test/CMakeFiles/XorshiftReset.dir/build
-.PHONY : XorshiftReset/fast
-
-# Convenience name for target.
-test/CMakeFiles/GenerateurParkMiller.dir/rule:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/GenerateurParkMiller.dir/rule
-.PHONY : test/CMakeFiles/GenerateurParkMiller.dir/rule
-
-# Convenience name for target.
-GenerateurParkMiller: test/CMakeFiles/GenerateurParkMiller.dir/rule
-
-.PHONY : GenerateurParkMiller
-
-# fast build rule for target.
-GenerateurParkMiller/fast:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/GenerateurParkMiller.dir/build.make test/CMakeFiles/GenerateurParkMiller.dir/build
-.PHONY : GenerateurParkMiller/fast
-
-# Convenience name for target.
-test/CMakeFiles/ParkMillerGene.dir/rule:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/ParkMillerGene.dir/rule
-.PHONY : test/CMakeFiles/ParkMillerGene.dir/rule
-
-# Convenience name for target.
-ParkMillerGene: test/CMakeFiles/ParkMillerGene.dir/rule
-
-.PHONY : ParkMillerGene
-
-# fast build rule for target.
-ParkMillerGene/fast:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/ParkMillerGene.dir/build.make test/CMakeFiles/ParkMillerGene.dir/build
-.PHONY : ParkMillerGene/fast
-
-# Convenience name for target.
-test/CMakeFiles/ParkMillerConstructor.dir/rule:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/ParkMillerConstructor.dir/rule
-.PHONY : test/CMakeFiles/ParkMillerConstructor.dir/rule
-
-# Convenience name for target.
-ParkMillerConstructor: test/CMakeFiles/ParkMillerConstructor.dir/rule
-
-.PHONY : ParkMillerConstructor
-
-# fast build rule for target.
-ParkMillerConstructor/fast:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/ParkMillerConstructor.dir/build.make test/CMakeFiles/ParkMillerConstructor.dir/build
-.PHONY : ParkMillerConstructor/fast
-
-# Convenience name for target.
-test/CMakeFiles/XorshiftNoParam.dir/rule:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/XorshiftNoParam.dir/rule
-.PHONY : test/CMakeFiles/XorshiftNoParam.dir/rule
-
-# Convenience name for target.
-XorshiftNoParam: test/CMakeFiles/XorshiftNoParam.dir/rule
-
-.PHONY : XorshiftNoParam
-
-# fast build rule for target.
-XorshiftNoParam/fast:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/XorshiftNoParam.dir/build.make test/CMakeFiles/XorshiftNoParam.dir/build
-.PHONY : XorshiftNoParam/fast
-
-# Convenience name for target.
-test/CMakeFiles/GenerateurXorShift.dir/rule:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/GenerateurXorShift.dir/rule
-.PHONY : test/CMakeFiles/GenerateurXorShift.dir/rule
-
-# Convenience name for target.
-GenerateurXorShift: test/CMakeFiles/GenerateurXorShift.dir/rule
-
-.PHONY : GenerateurXorShift
-
-# fast build rule for target.
-GenerateurXorShift/fast:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/GenerateurXorShift.dir/build.make test/CMakeFiles/GenerateurXorShift.dir/build
-.PHONY : GenerateurXorShift/fast
+XorshiftConstructor/fast:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/XorshiftConstructor.dir/build.make test/CMakeFiles/XorshiftConstructor.dir/build
+.PHONY : XorshiftConstructor/fast
 
 # Convenience name for target.
 test/CMakeFiles/ParkMillerCopy.dir/rule:
@@ -361,19 +196,184 @@ ParkMillerCopy/fast:
 .PHONY : ParkMillerCopy/fast
 
 # Convenience name for target.
-test/CMakeFiles/XorshiftConstructor.dir/rule:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/XorshiftConstructor.dir/rule
-.PHONY : test/CMakeFiles/XorshiftConstructor.dir/rule
+test/CMakeFiles/GenerateurXorShift.dir/rule:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/GenerateurXorShift.dir/rule
+.PHONY : test/CMakeFiles/GenerateurXorShift.dir/rule
 
 # Convenience name for target.
-XorshiftConstructor: test/CMakeFiles/XorshiftConstructor.dir/rule
+GenerateurXorShift: test/CMakeFiles/GenerateurXorShift.dir/rule
 
-.PHONY : XorshiftConstructor
+.PHONY : GenerateurXorShift
 
 # fast build rule for target.
-XorshiftConstructor/fast:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/XorshiftConstructor.dir/build.make test/CMakeFiles/XorshiftConstructor.dir/build
-.PHONY : XorshiftConstructor/fast
+GenerateurXorShift/fast:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/GenerateurXorShift.dir/build.make test/CMakeFiles/GenerateurXorShift.dir/build
+.PHONY : GenerateurXorShift/fast
+
+# Convenience name for target.
+test/CMakeFiles/ParkMillerConstructor.dir/rule:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/ParkMillerConstructor.dir/rule
+.PHONY : test/CMakeFiles/ParkMillerConstructor.dir/rule
+
+# Convenience name for target.
+ParkMillerConstructor: test/CMakeFiles/ParkMillerConstructor.dir/rule
+
+.PHONY : ParkMillerConstructor
+
+# fast build rule for target.
+ParkMillerConstructor/fast:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/ParkMillerConstructor.dir/build.make test/CMakeFiles/ParkMillerConstructor.dir/build
+.PHONY : ParkMillerConstructor/fast
+
+# Convenience name for target.
+test/CMakeFiles/ParkMillerGene.dir/rule:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/ParkMillerGene.dir/rule
+.PHONY : test/CMakeFiles/ParkMillerGene.dir/rule
+
+# Convenience name for target.
+ParkMillerGene: test/CMakeFiles/ParkMillerGene.dir/rule
+
+.PHONY : ParkMillerGene
+
+# fast build rule for target.
+ParkMillerGene/fast:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/ParkMillerGene.dir/build.make test/CMakeFiles/ParkMillerGene.dir/build
+.PHONY : ParkMillerGene/fast
+
+# Convenience name for target.
+test/CMakeFiles/GenerateurParkMiller.dir/rule:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/GenerateurParkMiller.dir/rule
+.PHONY : test/CMakeFiles/GenerateurParkMiller.dir/rule
+
+# Convenience name for target.
+GenerateurParkMiller: test/CMakeFiles/GenerateurParkMiller.dir/rule
+
+.PHONY : GenerateurParkMiller
+
+# fast build rule for target.
+GenerateurParkMiller/fast:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/GenerateurParkMiller.dir/build.make test/CMakeFiles/GenerateurParkMiller.dir/build
+.PHONY : GenerateurParkMiller/fast
+
+# Convenience name for target.
+test/CMakeFiles/XorshiftReset.dir/rule:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/XorshiftReset.dir/rule
+.PHONY : test/CMakeFiles/XorshiftReset.dir/rule
+
+# Convenience name for target.
+XorshiftReset: test/CMakeFiles/XorshiftReset.dir/rule
+
+.PHONY : XorshiftReset
+
+# fast build rule for target.
+XorshiftReset/fast:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/XorshiftReset.dir/build.make test/CMakeFiles/XorshiftReset.dir/build
+.PHONY : XorshiftReset/fast
+
+# Convenience name for target.
+test/CMakeFiles/ParkMillerReset.dir/rule:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/ParkMillerReset.dir/rule
+.PHONY : test/CMakeFiles/ParkMillerReset.dir/rule
+
+# Convenience name for target.
+ParkMillerReset: test/CMakeFiles/ParkMillerReset.dir/rule
+
+.PHONY : ParkMillerReset
+
+# fast build rule for target.
+ParkMillerReset/fast:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/ParkMillerReset.dir/build.make test/CMakeFiles/ParkMillerReset.dir/build
+.PHONY : ParkMillerReset/fast
+
+# Convenience name for target.
+test/CMakeFiles/ParkMillerSetSeed.dir/rule:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/ParkMillerSetSeed.dir/rule
+.PHONY : test/CMakeFiles/ParkMillerSetSeed.dir/rule
+
+# Convenience name for target.
+ParkMillerSetSeed: test/CMakeFiles/ParkMillerSetSeed.dir/rule
+
+.PHONY : ParkMillerSetSeed
+
+# fast build rule for target.
+ParkMillerSetSeed/fast:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/ParkMillerSetSeed.dir/build.make test/CMakeFiles/ParkMillerSetSeed.dir/build
+.PHONY : ParkMillerSetSeed/fast
+
+# Convenience name for target.
+test/CMakeFiles/XorshiftGene.dir/rule:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/XorshiftGene.dir/rule
+.PHONY : test/CMakeFiles/XorshiftGene.dir/rule
+
+# Convenience name for target.
+XorshiftGene: test/CMakeFiles/XorshiftGene.dir/rule
+
+.PHONY : XorshiftGene
+
+# fast build rule for target.
+XorshiftGene/fast:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/XorshiftGene.dir/build.make test/CMakeFiles/XorshiftGene.dir/build
+.PHONY : XorshiftGene/fast
+
+# Convenience name for target.
+test/CMakeFiles/XorshiftCopy.dir/rule:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/XorshiftCopy.dir/rule
+.PHONY : test/CMakeFiles/XorshiftCopy.dir/rule
+
+# Convenience name for target.
+XorshiftCopy: test/CMakeFiles/XorshiftCopy.dir/rule
+
+.PHONY : XorshiftCopy
+
+# fast build rule for target.
+XorshiftCopy/fast:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/XorshiftCopy.dir/build.make test/CMakeFiles/XorshiftCopy.dir/build
+.PHONY : XorshiftCopy/fast
+
+# Convenience name for target.
+test/CMakeFiles/XorshiftNoParam.dir/rule:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/XorshiftNoParam.dir/rule
+.PHONY : test/CMakeFiles/XorshiftNoParam.dir/rule
+
+# Convenience name for target.
+XorshiftNoParam: test/CMakeFiles/XorshiftNoParam.dir/rule
+
+.PHONY : XorshiftNoParam
+
+# fast build rule for target.
+XorshiftNoParam/fast:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/XorshiftNoParam.dir/build.make test/CMakeFiles/XorshiftNoParam.dir/build
+.PHONY : XorshiftNoParam/fast
+
+# Convenience name for target.
+test/CMakeFiles/DistributionNormaleParkMiller.dir/rule:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/DistributionNormaleParkMiller.dir/rule
+.PHONY : test/CMakeFiles/DistributionNormaleParkMiller.dir/rule
+
+# Convenience name for target.
+DistributionNormaleParkMiller: test/CMakeFiles/DistributionNormaleParkMiller.dir/rule
+
+.PHONY : DistributionNormaleParkMiller
+
+# fast build rule for target.
+DistributionNormaleParkMiller/fast:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/DistributionNormaleParkMiller.dir/build.make test/CMakeFiles/DistributionNormaleParkMiller.dir/build
+.PHONY : DistributionNormaleParkMiller/fast
+
+# Convenience name for target.
+test/CMakeFiles/DistributionNormaleXorShift.dir/rule:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/DistributionNormaleXorShift.dir/rule
+.PHONY : test/CMakeFiles/DistributionNormaleXorShift.dir/rule
+
+# Convenience name for target.
+DistributionNormaleXorShift: test/CMakeFiles/DistributionNormaleXorShift.dir/rule
+
+.PHONY : DistributionNormaleXorShift
+
+# fast build rule for target.
+DistributionNormaleXorShift/fast:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/DistributionNormaleXorShift.dir/build.make test/CMakeFiles/DistributionNormaleXorShift.dir/build
+.PHONY : DistributionNormaleXorShift/fast
 
 # Convenience name for target.
 test/CMakeFiles/XorshiftSetSeed.dir/rule:
@@ -390,13 +390,28 @@ XorshiftSetSeed/fast:
 	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/XorshiftSetSeed.dir/build.make test/CMakeFiles/XorshiftSetSeed.dir/build
 .PHONY : XorshiftSetSeed/fast
 
+# Convenience name for target.
+test/CMakeFiles/ParkMillerNoParam.dir/rule:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/ParkMillerNoParam.dir/rule
+.PHONY : test/CMakeFiles/ParkMillerNoParam.dir/rule
+
+# Convenience name for target.
+ParkMillerNoParam: test/CMakeFiles/ParkMillerNoParam.dir/rule
+
+.PHONY : ParkMillerNoParam
+
+# fast build rule for target.
+ParkMillerNoParam/fast:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/ParkMillerNoParam.dir/build.make test/CMakeFiles/ParkMillerNoParam.dir/build
+.PHONY : ParkMillerNoParam/fast
+
 test_dn.o: test_dn.cpp.o
 
 .PHONY : test_dn.o
 
 # target to build an object file
 test_dn.cpp.o:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/DistributionNormale.dir/build.make test/CMakeFiles/DistributionNormale.dir/test_dn.cpp.o
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/DistributionNormaleParkMiller.dir/build.make test/CMakeFiles/DistributionNormaleParkMiller.dir/test_dn.cpp.o
 .PHONY : test_dn.cpp.o
 
 test_dn.i: test_dn.cpp.i
@@ -405,7 +420,7 @@ test_dn.i: test_dn.cpp.i
 
 # target to preprocess a source file
 test_dn.cpp.i:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/DistributionNormale.dir/build.make test/CMakeFiles/DistributionNormale.dir/test_dn.cpp.i
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/DistributionNormaleParkMiller.dir/build.make test/CMakeFiles/DistributionNormaleParkMiller.dir/test_dn.cpp.i
 .PHONY : test_dn.cpp.i
 
 test_dn.s: test_dn.cpp.s
@@ -414,8 +429,35 @@ test_dn.s: test_dn.cpp.s
 
 # target to generate assembly for a file
 test_dn.cpp.s:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/DistributionNormale.dir/build.make test/CMakeFiles/DistributionNormale.dir/test_dn.cpp.s
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/DistributionNormaleParkMiller.dir/build.make test/CMakeFiles/DistributionNormaleParkMiller.dir/test_dn.cpp.s
 .PHONY : test_dn.cpp.s
+
+test_dn_xors.o: test_dn_xors.cpp.o
+
+.PHONY : test_dn_xors.o
+
+# target to build an object file
+test_dn_xors.cpp.o:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/DistributionNormaleXorShift.dir/build.make test/CMakeFiles/DistributionNormaleXorShift.dir/test_dn_xors.cpp.o
+.PHONY : test_dn_xors.cpp.o
+
+test_dn_xors.i: test_dn_xors.cpp.i
+
+.PHONY : test_dn_xors.i
+
+# target to preprocess a source file
+test_dn_xors.cpp.i:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/DistributionNormaleXorShift.dir/build.make test/CMakeFiles/DistributionNormaleXorShift.dir/test_dn_xors.cpp.i
+.PHONY : test_dn_xors.cpp.i
+
+test_dn_xors.s: test_dn_xors.cpp.s
+
+.PHONY : test_dn_xors.s
+
+# target to generate assembly for a file
+test_dn_xors.cpp.s:
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/DistributionNormaleXorShift.dir/build.make test/CMakeFiles/DistributionNormaleXorShift.dir/test_dn_xors.cpp.s
+.PHONY : test_dn_xors.cpp.s
 
 test_gen_pm.o: test_gen_pm.cpp.o
 
@@ -585,8 +627,8 @@ test_pm_parametre.o: test_pm_parametre.cpp.o
 
 # target to build an object file
 test_pm_parametre.cpp.o:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/ParkMillerConstructor.dir/build.make test/CMakeFiles/ParkMillerConstructor.dir/test_pm_parametre.cpp.o
 	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/XorshiftConstructor.dir/build.make test/CMakeFiles/XorshiftConstructor.dir/test_pm_parametre.cpp.o
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/ParkMillerConstructor.dir/build.make test/CMakeFiles/ParkMillerConstructor.dir/test_pm_parametre.cpp.o
 .PHONY : test_pm_parametre.cpp.o
 
 test_pm_parametre.i: test_pm_parametre.cpp.i
@@ -595,8 +637,8 @@ test_pm_parametre.i: test_pm_parametre.cpp.i
 
 # target to preprocess a source file
 test_pm_parametre.cpp.i:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/ParkMillerConstructor.dir/build.make test/CMakeFiles/ParkMillerConstructor.dir/test_pm_parametre.cpp.i
 	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/XorshiftConstructor.dir/build.make test/CMakeFiles/XorshiftConstructor.dir/test_pm_parametre.cpp.i
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/ParkMillerConstructor.dir/build.make test/CMakeFiles/ParkMillerConstructor.dir/test_pm_parametre.cpp.i
 .PHONY : test_pm_parametre.cpp.i
 
 test_pm_parametre.s: test_pm_parametre.cpp.s
@@ -605,8 +647,8 @@ test_pm_parametre.s: test_pm_parametre.cpp.s
 
 # target to generate assembly for a file
 test_pm_parametre.cpp.s:
-	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/ParkMillerConstructor.dir/build.make test/CMakeFiles/ParkMillerConstructor.dir/test_pm_parametre.cpp.s
 	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/XorshiftConstructor.dir/build.make test/CMakeFiles/XorshiftConstructor.dir/test_pm_parametre.cpp.s
+	cd /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/build && $(MAKE) -f test/CMakeFiles/ParkMillerConstructor.dir/build.make test/CMakeFiles/ParkMillerConstructor.dir/test_pm_parametre.cpp.s
 .PHONY : test_pm_parametre.cpp.s
 
 test_pm_reset.o: test_pm_reset.cpp.o
@@ -777,31 +819,35 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install"
-	@echo "... rebuild_cache"
-	@echo "... test"
-	@echo "... list_install_components"
-	@echo "... install/strip"
-	@echo "... DistributionNormale"
-	@echo "... XorshiftCopy"
-	@echo "... XorshiftGene"
-	@echo "... ParkMillerSetSeed"
-	@echo "... ParkMillerReset"
-	@echo "... ParkMillerNoParam"
-	@echo "... XorshiftReset"
-	@echo "... install/local"
-	@echo "... GenerateurParkMiller"
-	@echo "... ParkMillerGene"
-	@echo "... ParkMillerConstructor"
-	@echo "... XorshiftNoParam"
-	@echo "... GenerateurXorShift"
-	@echo "... ParkMillerCopy"
-	@echo "... XorshiftConstructor"
 	@echo "... edit_cache"
+	@echo "... XorshiftConstructor"
+	@echo "... list_install_components"
+	@echo "... ParkMillerCopy"
+	@echo "... GenerateurXorShift"
+	@echo "... ParkMillerConstructor"
+	@echo "... ParkMillerGene"
+	@echo "... GenerateurParkMiller"
+	@echo "... XorshiftReset"
+	@echo "... ParkMillerReset"
+	@echo "... ParkMillerSetSeed"
+	@echo "... XorshiftGene"
+	@echo "... XorshiftCopy"
+	@echo "... XorshiftNoParam"
+	@echo "... install/local"
+	@echo "... DistributionNormaleParkMiller"
+	@echo "... DistributionNormaleXorShift"
+	@echo "... install"
+	@echo "... install/strip"
 	@echo "... XorshiftSetSeed"
+	@echo "... test"
+	@echo "... ParkMillerNoParam"
+	@echo "... rebuild_cache"
 	@echo "... test_dn.o"
 	@echo "... test_dn.i"
 	@echo "... test_dn.s"
+	@echo "... test_dn_xors.o"
+	@echo "... test_dn_xors.i"
+	@echo "... test_dn_xors.s"
 	@echo "... test_gen_pm.o"
 	@echo "... test_gen_pm.i"
 	@echo "... test_gen_pm.s"

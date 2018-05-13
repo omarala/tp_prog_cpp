@@ -70,7 +70,6 @@ Dvector::Dvector(string file_name){
     }
     infile.close();
     
- 
 }
 Dvector::Dvector(Dvector const & toCopy){
     this->vect = toCopy.vect;

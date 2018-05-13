@@ -75,6 +75,8 @@ iostream
 -
 Dvector.h
 /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/src/Dvector.h
+stdint.h
+/home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/src/stdint.h
 
 /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/src/GenerateurParkMiller.cpp
 iostream
@@ -133,6 +135,8 @@ assert.h
 -
 
 /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/src/XorShift.hpp
+stdint.h
+/home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/src/stdint.h
 GenerateurNombreAleatoire.hpp
 /home/omar/Documents/S4/prog_opti_cpp/Tp3_omar_alex/src/GenerateurNombreAleatoire.hpp
 
