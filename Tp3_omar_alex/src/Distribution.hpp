@@ -17,6 +17,7 @@ class Distribution{
     int get_dim();
     void set_dim(int dim);
     Dvector get_tab();
+    void set_tab(int i, double x);
     virtual double mean() = 0;
     virtual double var() = 0;
     virtual double cdf(double x) = 0;

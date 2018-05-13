@@ -21,7 +21,7 @@ DistributionNormale::DistributionNormale(double moyenne, double variance, Genera
     Dvector vect_gen = gen.generate();
     Dvector vect_gen2 = gen.generate();
     for (int i = 0; i < this->get_dim(); i++){
-        this->get_tab()(i) = moyenne+sqrt(variance)*sqrt(-2*log((double)vect_gen(i))/m)*cos(2*PI*(double)vect_gen2(i)/m2);    
+        this->set_tab(i,moyenne+sqrt(variance)*sqrt(-2*log((double)vect_gen(i)/m))*cos(2*PI*(double)vect_gen2(i)/m)); 
     }
 }
 
