@@ -1,0 +1,1 @@
+/usr/bin/c++   -g -Wall -std=c++11   CMakeFiles/ParkMillerGene.dir/test_pm_gene.cpp.o  -o ParkMillerGene -rdynamic ../src/liblibsrc.a ../build/googletest-src/googlemock/gtest/libgtest.a -pthread 

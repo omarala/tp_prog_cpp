@@ -32,3 +32,7 @@ void Distribution::set_dim(int dim){
 Dvector Distribution::get_tab(){
     return this->tableau;
 }
+
+void Distribution::set_tab(int i, double x){
+    this->tableau(i) = x;
+}

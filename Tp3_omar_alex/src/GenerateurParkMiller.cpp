@@ -3,11 +3,11 @@
 
 using namespace std;
 
-GenerateurParkMiller::GenerateurParkMiller():GenerateurNombreAleatoire(){
+GenerateurParkMiller::GenerateurParkMiller():GenerateurNombreAleatoire(1, 2147483647){
     this->pm = ParkMiller();
 }
 
-GenerateurParkMiller::GenerateurParkMiller(int dim):GenerateurNombreAleatoire(dim){
+GenerateurParkMiller::GenerateurParkMiller(int dim):GenerateurNombreAleatoire(dim, 2147483647){
     this->pm = ParkMiller();
 }
 

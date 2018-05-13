@@ -13,7 +13,7 @@ class GenerateurXorShift:public GenerateurNombreAleatoire{
     GenerateurXorShift();
     GenerateurXorShift(int dim);
     GenerateurXorShift(const GenerateurXorShift & toCopy);
-    ~GenerateurXorShift();
+    // ~GenerateurXorShift();
     Dvector generate();
     void set_seed(int seed);
     int get_seed();

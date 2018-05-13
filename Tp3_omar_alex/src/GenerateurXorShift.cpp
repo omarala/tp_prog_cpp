@@ -5,11 +5,11 @@
 
 using namespace std;
 
-GenerateurXorShift::GenerateurXorShift():GenerateurNombreAleatoire(){
+GenerateurXorShift::GenerateurXorShift():GenerateurNombreAleatoire(1, 0xFFFFFFFFFFFFFFFF){
     this->genxor = XorShift();
 }
 
-GenerateurXorShift::GenerateurXorShift(int dim):GenerateurNombreAleatoire(dim){
+GenerateurXorShift::GenerateurXorShift(int dim):GenerateurNombreAleatoire(dim, 0xFFFFFFFFFFFFFFFF){
     this->genxor = XorShift();
 }
 
@@ -26,9 +26,9 @@ Dvector GenerateurXorShift::generate(){
 
 }
 
-void XorShift::set_seed(int seed){
+void GenerateurXorShift::set_seed(int seed){
     if (seed > 0){
-        this->seed = seed;
+        this->genxor.set_seed(seed);
     }
 }
 

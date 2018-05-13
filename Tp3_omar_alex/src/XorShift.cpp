@@ -44,6 +44,9 @@ int XorShift::generate_int(){
     this->seed = this->seed ^ (this->seed << a1);
     this->seed = this->seed ^ (this->seed >> a2);
     this->seed = this->seed ^ (this->seed << a3);
+    if(this->seed <0){
+        this->seed += 0xFFFFFFFFFFFFFFFF;
+    }
     return this->seed;
 }
 

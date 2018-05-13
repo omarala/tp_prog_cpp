@@ -6,8 +6,7 @@
 
 using namespace std;
 #define PI  3.14159265359
-#define m 2147483647
-long long int m2 = 18446744073709551615LL;
+
 
 
 DistributionNormale::DistributionNormale():Distribution(){
@@ -19,10 +18,9 @@ DistributionNormale::DistributionNormale(double moyenne, double variance, Genera
     this->moyenne = moyenne;
     this->variance = variance;
     Dvector vect_gen = gen.generate();
-    cout << vect_gen <<endl;
+    Dvector vect_gen2 = gen.generate();
     for (int i = 0; i < this->get_dim(); i++){
-        this->get_tab()(i) = moyenne+sqrt(variance)*sqrt(-2*log(vect_gen(i))/m)*cos(2*PI*vect_gen(i)/m2);    
-        cout << this->get_tab()(i) <<endl;
+        this->set_tab(i,moyenne+sqrt(variance)*sqrt(-2*log((double)vect_gen(i)/gen.get_rand_max()))*cos(2*PI*(double)vect_gen2(i)/gen.get_rand_max())); 
     }
 }
 
@@ -45,8 +43,9 @@ double DistributionNormale::mean(){
 
 double DistributionNormale::var(){
     double variance = 0;
+    double moyenne_empirique = this->mean();
     for (int i = 0; i < this->get_dim(); i++){
-        variance += (this->get_tab()(i)-this->mean())*(this->get_tab()(i)-this->mean());
+        variance += (this->get_tab()(i)-moyenne_empirique)*(this->get_tab()(i)-moyenne_empirique);
     }
     return variance / (this->get_dim()-1);
 }

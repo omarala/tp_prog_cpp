@@ -5,7 +5,7 @@ project(TP1)
 set(CMAKE_CXX_FLAGS "-g -Wall -std=c++11")
 
 add_subdirectory(src)
-add_subdirectory(doc)
+#add_subdirectory(doc)
 add_subdirectory(test)
 enable_testing ()
 # Télécharge googletest au moment de la configureation
